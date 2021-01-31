@@ -2,10 +2,12 @@
 //
 
 #include "SwordOffer_042_MaxSubArray.h"
+#include "LC0121_MaxProfit.h"
 
 int main()
 {
-    SwordOffer_042_MaxSubArray   instance;
+    //SwordOffer_042_MaxSubArray   instance;
+    LC0121_MaxProfit             instance;
 
     ILeetCodeEntry *pLeetCodeEntry = &instance;
     return pLeetCodeEntry->MainEntry();

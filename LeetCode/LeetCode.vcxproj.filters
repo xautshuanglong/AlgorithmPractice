@@ -29,5 +29,8 @@
     <ClInclude Include="LeetCodeDefines.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LC0121_MaxProfit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

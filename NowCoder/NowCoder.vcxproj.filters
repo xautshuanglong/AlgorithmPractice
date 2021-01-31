@@ -20,16 +20,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="NC78_ReverseList.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="INowCoderEntry.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="NowCoderDefines.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NC93_LRU.h">
+    <ClInclude Include="NC0093_LRU.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NC0078_ReverseList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -143,8 +143,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="INowCoderEntry.h" />
-    <ClInclude Include="NC78_ReverseList.h" />
-    <ClInclude Include="NC93_LRU.h" />
+    <ClInclude Include="NC0078_ReverseList.h" />
+    <ClInclude Include="NC0093_LRU.h" />
     <ClInclude Include="NowCoderDefines.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

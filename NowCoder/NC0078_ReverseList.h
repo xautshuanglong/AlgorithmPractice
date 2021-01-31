@@ -3,7 +3,7 @@
 #include "NowCoderDefines.h"
 #include "INowCoderEntry.h"
 
-class NC78_ReverseList : public INowCoderEntry
+class NC0078_ReverseList : public INowCoderEntry
 {
 public:
     int MainEntry() override

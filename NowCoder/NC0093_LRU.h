@@ -6,7 +6,7 @@
 /************************************************************************/
 /* Least Recently Used  最近最少使用算法                                 */
 /************************************************************************/
-class NC93_LRU : public INowCoderEntry
+class NC0093_LRU : public INowCoderEntry
 {
 public:
     struct DListNode
