@@ -19,4 +19,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SwordOffer_042_MaxSubArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ILeetCodeEntry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LeetCodeDefines.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

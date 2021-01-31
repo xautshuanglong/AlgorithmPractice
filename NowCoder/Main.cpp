@@ -1,17 +1,15 @@
 // NowCoder.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include <iostream>
-
 #include "NC78_ReverseList.h"
 #include "NC93_LRU.h"
 
 int main()
 {
-    NC78_ReverseList reverseList;
-    NC93_LRU lru;
+    //NC78_ReverseList instance;
+    NC93_LRU         instance;
 
-    INowCoderEntry *pNowCoderEntry = &lru;
+    INowCoderEntry *pNowCoderEntry = &instance;
     return pNowCoderEntry->MainEntry();
 }
 
