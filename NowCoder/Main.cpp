@@ -3,11 +3,13 @@
 
 #include "NC0078_ReverseList.h"
 #include "NC0093_LRU.h"
+#include "NC0140_MySort.h"
 
 int main()
 {
     //NC0078_ReverseList instance;
-    NC0093_LRU         instance;
+    //NC0093_LRU         instance;
+    NC0140_MySort      instance;
 
     INowCoderEntry *pNowCoderEntry = &instance;
     return pNowCoderEntry->MainEntry();
