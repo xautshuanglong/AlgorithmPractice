@@ -15,29 +15,41 @@ public:
         std::cout << "NC0140_MySort --> MainEntry" << std::endl;
 
         std::vector<int> intVector;
+        intVector.push_back(5);
+        intVector.push_back(2);
+        intVector.push_back(3);
+        intVector.push_back(1);
+        intVector.push_back(4);
+
         //intVector.push_back(5);
-        //intVector.push_back(2);
-        //intVector.push_back(3);
-        //intVector.push_back(1);
         //intVector.push_back(4);
+        //intVector.push_back(3);
+        //intVector.push_back(2);
+        //intVector.push_back(1);
 
         //for (int i = 100000; i>0; --i)
         //{
         //    intVector.push_back(i);
         //}
 
-        for (int i = 0; i < 100000; ++i)
-        {
-            intVector.push_back(i);
-        }
+        //for (int i = 0; i < 100000; ++i)
+        //{
+        //    intVector.push_back(i);
+        //}
 
         //NowCoderVectorPrint(intVector);
         ULONGLONG startTick = GetTickCount64();
         std::cout << "----------------- BEGIN (" << startTick << ") -----------------" << std::endl;
-        std::vector<int> resultVector = this->MySort_Bubble(intVector);
+        //std::vector<int> resultVector = this->MySort_Bubble(intVector);
         //std::vector<int> resultVector = this->MySort_Selection(intVector);
-        //std::vector<int> resultVector = this->MySort_Insertion(intVector);
+        std::vector<int> resultVector = this->MySort_Insertion(intVector);
+        //std::vector<int> resultVector = this->MySort_Shell(intVector);
+        //std::vector<int> resultVector = this->MySort_Merge(intVector);
         //std::vector<int> resultVector = this->MySort_Quick(intVector);
+        //std::vector<int> resultVector = this->MySort_Heap(intVector);
+        //std::vector<int> resultVector = this->MySort_Counting(intVector);
+        //std::vector<int> resultVector = this->MySort_Bucket(intVector);
+        //std::vector<int> resultVector = this->MySort_Radix(intVector);
         //std::vector<int> resultVector = this->MySort_STL_Sort(intVector);
         ULONGLONG endTick = GetTickCount64();
         std::cout << "----------------- END (" << endTick << ") -----------------" << std::endl;
@@ -69,9 +81,14 @@ public:
      ************************************************************************/
     std::vector<int> MySort_Bubble(std::vector<int> &arr)
     {
+        size_t arrLen = arr.size();
+        if (arrLen < 2)
+        {
+            return arr;
+        }
+
         int temp = 0;
         bool switchFlag = false;
-        size_t arrLen = arr.size();
 
         for (size_t i = 0; i < arrLen - 1; ++i)
         {
@@ -111,10 +128,15 @@ public:
      ***********************************************************************************/
     std::vector<int> MySort_Selection(std::vector<int> &arr)
     {
+        size_t arrLen = arr.size();
+        if (arrLen < 2)
+        {
+            return arr;
+        }
+
         int temp = 0;
         bool switchFlag = false;
         size_t targetIdx = 0;
-        size_t arrLen = arr.size();
 
         for (size_t i = 0; i < arrLen - 1; ++i)
         {
@@ -155,7 +177,32 @@ public:
      ************************************************************************/
     std::vector<int> MySort_Insertion(std::vector<int> &arr)
     {
-        std::sort(arr.begin(), arr.end());
+        size_t arrLen = arr.size();
+        if (arrLen < 2)
+        {
+            return arr;
+        }
+        int temp = 0;
+        // TODO: 在已经有序的数组中插入数据，考虑使用二分法插入。
+        for (size_t i = 1; i < arrLen; ++i)
+        {
+            temp = arr[i];
+
+            size_t j = 0;
+            for (j = i - 1; j >= 0 && j != size_t(-1); --j)
+            {
+                if (temp < arr[j])
+                {
+                    arr[j + 1] = arr[j];
+                }
+                else
+                {
+                    break;
+                }
+            }
+            arr[j + 1] = temp;
+        }
+
         return arr;
     }
 
