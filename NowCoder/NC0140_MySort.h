@@ -3,9 +3,10 @@
 #include "NowCoderDefines.h"
 #include "INowCoderEntry.h"
 
-/************************************************************************/
-/* https://www.runoob.com/w3cnote/ten-sorting-algorithm.html            */
-/************************************************************************/
+/************************************************************************
+ * ²Î¿¼ÍøÖ·£ºhttps://www.runoob.com/w3cnote/ten-sorting-algorithm.html            
+ * ²Î¿¼ÍøÖ·£ºhttps://www.cnblogs.com/onepixel/p/7674659.html
+ ************************************************************************/
 
 class NC0140_MySort : public INowCoderEntry
 {
@@ -42,8 +43,8 @@ public:
         std::cout << "----------------- BEGIN (" << startTick << ") -----------------" << std::endl;
         //std::vector<int> resultVector = this->MySort_Bubble(intVector);
         //std::vector<int> resultVector = this->MySort_Selection(intVector);
-        std::vector<int> resultVector = this->MySort_Insertion(intVector);
-        //std::vector<int> resultVector = this->MySort_Shell(intVector);
+        //std::vector<int> resultVector = this->MySort_Insertion(intVector);
+        std::vector<int> resultVector = this->MySort_Shell(intVector);
         //std::vector<int> resultVector = this->MySort_Merge(intVector);
         //std::vector<int> resultVector = this->MySort_Quick(intVector);
         //std::vector<int> resultVector = this->MySort_Heap(intVector);
@@ -219,6 +220,32 @@ public:
      *****************************************************************************************************/
     std::vector<int> MySort_Shell(std::vector<int> &arr)
     {
+        size_t arrLen = arr.size();
+        size_t stepSize = arrLen;
+        int temp = 0;
+
+        do
+        {
+            stepSize = stepSize / 2;
+            for (size_t i = stepSize; i < arrLen; i += stepSize)
+            {
+                temp = arr[i];
+                size_t j = 0;
+                for (j = i - stepSize; j >= 0 && j != 0-stepSize; j -= stepSize)
+                {
+                    if (temp < arr[j])
+                    {
+                        arr[j + stepSize] = arr[j];
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                arr[j + stepSize] = temp;
+            }
+        } while (stepSize >= 2);
+
         return arr;
     }
 
