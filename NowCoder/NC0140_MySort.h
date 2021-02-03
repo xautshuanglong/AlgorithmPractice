@@ -22,15 +22,18 @@ public:
         intVector.push_back(1);
         intVector.push_back(4);
 
+        //std::vector<int> intVector;
         //intVector.push_back(5);
         //intVector.push_back(4);
         //intVector.push_back(3);
         //intVector.push_back(2);
         //intVector.push_back(1);
 
-        //for (int i = 100000; i>0; --i)
+        //const int size = 100000;
+        //std::vector<int> intVector(size);
+        //for (int i = 0; i<size; ++i)
         //{
-        //    intVector.push_back(i);
+        //    intVector[i] = size - i;
         //}
 
         //for (int i = 0; i < 100000; ++i)
@@ -45,8 +48,8 @@ public:
         //std::vector<int> resultVector = this->MySort_Selection(intVector);
         //std::vector<int> resultVector = this->MySort_Insertion(intVector);
         //std::vector<int> resultVector = this->MySort_Shell(intVector);
-        std::vector<int> resultVector = this->MySort_Merge(intVector);
-        //std::vector<int> resultVector = this->MySort_Quick(intVector);
+        //std::vector<int> resultVector = this->MySort_Merge(intVector);
+        std::vector<int> resultVector = this->MySort_Quick(intVector);
         //std::vector<int> resultVector = this->MySort_Heap(intVector);
         //std::vector<int> resultVector = this->MySort_Counting(intVector);
         //std::vector<int> resultVector = this->MySort_Bucket(intVector);
@@ -55,7 +58,7 @@ public:
         ULONGLONG endTick = GetTickCount64();
         std::cout << "----------------- END (" << endTick << ") -----------------" << std::endl;
         std::cout << "Elapsed Time: " << endTick - startTick << " ms" << std::endl;
-        //NowCoderVectorPrint(resultVector);
+        NowCoderVectorPrint(resultVector);
 
         return 0;
     }
@@ -337,7 +340,9 @@ public:
      **********************************************************************************************************/
     std::vector<int> MySort_Quick(std::vector<int> &arr)
     {
-        this->Recursive_Quick(arr, 0, arr.size() - 1);
+        //递归版本
+        this->Recursive_Quick(arr, 0, (int)arr.size() - 1);
+        //非递归版本
         return arr;
     }
 
@@ -345,10 +350,10 @@ public:
      * 堆排序
      * 堆排序（Heapsort）是指利用堆这种数据结构所设计的一种排序算法。
      * 堆积是一个近似完全二叉树的结构，并同时满足堆积的性质：即子结点的键值或索引总是小于（或者大于）它的父节点。
-     * 1. 将初始待排序关键字序列(R1,R2….Rn)构建成大顶堆，此堆为初始的无序区；
-     * 2. 将堆顶元素R[1]与最后一个元素R[n]交换，此时得到新的无序区(R1,R2,……Rn-1)和新的有序区(Rn),且满足R[1,2…n-1]<=R[n]；
-     * 3. 由于交换后新的堆顶R[1]可能违反堆的性质，因此需要对当前无序区(R1,R2,……Rn-1)调整为新堆，然后再次将R[1]与无序区最后一个元素交换，
-     *    得到新的无序区(R1,R2….Rn-2)和新的有序区(Rn-1,Rn)。不断重复此过程直到有序区的元素个数为n-1，则整个排序过程完成。
+     * 1. 将初始待排序关键字序列(R1，R2，···，Rn)构建成大顶堆，此堆为初始的无序区；
+     * 2. 将堆顶元素R[1]与最后一个元素R[n]交换，此时得到新的无序区(R1，R2，···，Rn-1)和新的有序区(Rn),且满足R[1，2，···，n-1]<=R[n]；
+     * 3. 由于交换后新的堆顶R[1]可能违反堆的性质，因此需要对当前无序区(R1，R2，···，Rn-1)调整为新堆，然后再次将R[1]与无序区最后一个元素交换，
+     *    得到新的无序区(R1，R2，···，Rn-2)和新的有序区(Rn-1,Rn)。不断重复此过程直到有序区的元素个数为n-1，则整个排序过程完成。
      ******************************************************************************************************************************/
     std::vector<int> MySort_Heap(std::vector<int> &arr)
     {
@@ -459,7 +464,35 @@ private:
         }
     }
 
-    void Recursive_Quick(std::vector<int> &arr, size_t left, size_t right)
+    void Recursive_Quick(std::vector<int> &arr, int left, int right)
     {
+        if (left < right)
+        {
+            // 分区
+            int baseValue = arr[left];
+            int baseIndex = left;
+            int partIndex = 0;
+            int temp = 0;
+            int lesserIndex = left + 1;
+
+            for (int i = lesserIndex; i <= right; ++i)
+            {
+                if (arr[i] < baseValue)
+                {
+                    temp = arr[lesserIndex];
+                    arr[lesserIndex] = arr[i];
+                    arr[i] = temp;
+                    ++lesserIndex;
+                }
+            }
+
+            arr[baseIndex] = arr[lesserIndex - 1];
+            arr[lesserIndex - 1] = baseValue;
+            partIndex = lesserIndex - 1;
+
+            // 递归处理子分区
+            Recursive_Quick(arr, left, partIndex - 1);
+            Recursive_Quick(arr, partIndex + 1, right);
+        }
     }
 };
