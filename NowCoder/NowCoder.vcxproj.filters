@@ -35,5 +35,8 @@
     <ClInclude Include="NC0140_MySort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="NC0121_Permutation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
