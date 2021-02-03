@@ -44,8 +44,8 @@ public:
         //std::vector<int> resultVector = this->MySort_Bubble(intVector);
         //std::vector<int> resultVector = this->MySort_Selection(intVector);
         //std::vector<int> resultVector = this->MySort_Insertion(intVector);
-        std::vector<int> resultVector = this->MySort_Shell(intVector);
-        //std::vector<int> resultVector = this->MySort_Merge(intVector);
+        //std::vector<int> resultVector = this->MySort_Shell(intVector);
+        std::vector<int> resultVector = this->MySort_Merge(intVector);
         //std::vector<int> resultVector = this->MySort_Quick(intVector);
         //std::vector<int> resultVector = this->MySort_Heap(intVector);
         //std::vector<int> resultVector = this->MySort_Counting(intVector);
@@ -55,7 +55,7 @@ public:
         ULONGLONG endTick = GetTickCount64();
         std::cout << "----------------- END (" << endTick << ") -----------------" << std::endl;
         std::cout << "Elapsed Time: " << endTick - startTick << " ms" << std::endl;
-        NowCoderVectorPrint(resultVector);
+        //NowCoderVectorPrint(resultVector);
 
         return 0;
     }
@@ -249,16 +249,78 @@ public:
         return arr;
     }
 
-    /************************************************************************
+    /*********************************************************************************************************
      * 归并排序
      * 归并排序是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。
      * 将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为2-路归并。 
      *  1. 把长度为n的输入序列分成两个长度为n/2的子序列；
      *  2. 对这两个子序列分别采用归并排序；
      *  3. 将两个排序好的子序列合并成一个最终的排序序列。
-     ************************************************************************/
+     *********************************************************************************************************/
     std::vector<int> MySort_Merge(std::vector<int> &arr)
     {
+        int arrLen = (int)arr.size();
+
+        //递归版本
+        //this->Recursive_Merge(arr, 0, arrLen - 1);
+        //非递归版本
+
+        std::vector<int> copyVector(arrLen, 0);
+
+        std::vector<int> *pInputVector = &arr;
+        std::vector<int> *pMergedVector = &copyVector;
+        std::vector<int> *pTempVector = NULL;
+
+        for (int segmentSize = 1; segmentSize < arrLen; segmentSize += segmentSize)
+        {
+            for (int segmentIdx = 0; segmentIdx < arrLen; segmentIdx += segmentSize + segmentSize)
+            {
+                // 操作 pMergedVector 在输入数组和备份数组间切换
+                int startIndex1 = segmentIdx;
+                int startIndex2 = segmentIdx + segmentSize;
+
+                int endIndex1 = std::min<int>(segmentIdx + segmentSize, arrLen);
+                int endIndex2 = std::min<int>(segmentIdx + segmentSize + segmentSize, arrLen);
+
+                int mergedIndex = segmentIdx;
+                while (startIndex1 < endIndex1 && startIndex2 < endIndex2)
+                {
+                    if (pInputVector->at(startIndex1) < pInputVector->at(startIndex2))
+                    {
+                        pMergedVector->at(mergedIndex) = pInputVector->at(startIndex1);
+                        ++startIndex1;
+                    }
+                    else
+                    {
+                        pMergedVector->at(mergedIndex) = pInputVector->at(startIndex2);
+                        ++startIndex2;
+                    }
+                    ++mergedIndex;
+                }
+                while (startIndex1 < endIndex1)
+                {
+                    pMergedVector->at(mergedIndex) = pInputVector->at(startIndex1);
+                    ++startIndex1;
+                    ++mergedIndex;
+                }
+                while (startIndex2 < endIndex2)
+                {
+                    pMergedVector->at(mergedIndex) = pInputVector->at(startIndex2);
+                    ++startIndex2;
+                    ++mergedIndex;
+                }
+            }
+
+            pTempVector = pInputVector;
+            pInputVector = pMergedVector;
+            pMergedVector = pTempVector;
+        }
+
+        if (pInputVector != &arr)
+        {
+            arr = *pInputVector;
+        }
+
         return arr;
     }
 
@@ -275,7 +337,7 @@ public:
      **********************************************************************************************************/
     std::vector<int> MySort_Quick(std::vector<int> &arr)
     {
-        this->QuickSortRecursive(arr, 0, arr.size() - 1);
+        this->Recursive_Quick(arr, 0, arr.size() - 1);
         return arr;
     }
 
@@ -353,7 +415,51 @@ public:
     }
 
 private:
-    void QuickSortRecursive(std::vector<int> &arr, size_t left, size_t right)
+    void Recursive_Merge(std::vector<int> &inputVector, int startIdx, int endIdx)
+    {
+        if (startIdx >= endIdx)
+        {
+            return;
+        }
+
+        int midIndex = (startIdx + endIdx) / 2;
+        Recursive_Merge(inputVector, startIdx, midIndex);   // 处理左侧分组
+        Recursive_Merge(inputVector, midIndex + 1, endIdx); // 处理右侧分组
+
+        std::vector<int> inputLeft(inputVector.begin() + startIdx, inputVector.begin() + midIndex + 1);
+        std::vector<int> inputRight(inputVector.begin() + midIndex + 1, inputVector.begin() + endIdx + 1);
+
+        // 合并
+        int indexLeft = 0;
+        int indexRight = 0;
+        int inputCountLeft = (int)inputLeft.size();
+        int inputCountRight = (int)inputRight.size();
+        for (int i = startIdx; i <= endIdx; ++i)
+        {
+            if (indexLeft >= inputCountLeft)
+            {
+                inputVector[i] = inputRight[indexRight];
+                ++indexRight;
+            }
+            else if (indexRight >= inputCountRight)
+            {
+                inputVector[i] = inputLeft[indexLeft];
+                ++indexLeft;
+            }
+            else if (inputLeft[indexLeft] < inputRight[indexRight])
+            {
+                inputVector[i] = inputLeft[indexLeft];
+                ++indexLeft;
+            }
+            else
+            {
+                inputVector[i] = inputRight[indexRight];
+                ++indexRight;
+            }
+        }
+    }
+
+    void Recursive_Quick(std::vector<int> &arr, size_t left, size_t right)
     {
     }
 };
