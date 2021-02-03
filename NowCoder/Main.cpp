@@ -6,7 +6,7 @@
 #include "NC0121_Permutation.h"
 #include "NC0140_MySort.h"
 
-int main()
+int main(int argc, char** argv)
 {
     //NC0078_ReverseList instance;
     //NC0093_LRU         instance;
@@ -14,7 +14,7 @@ int main()
     NC0121_Permutation instance;
 
     INowCoderEntry *pNowCoderEntry = &instance;
-    return pNowCoderEntry->MainEntry();
+    return pNowCoderEntry->MainEntry(argc, argv);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

@@ -6,5 +6,5 @@ public:
     INowCoderEntry() {}
     virtual ~INowCoderEntry() {}
 
-    virtual int MainEntry() = 0;
+    virtual int MainEntry(int argc, char **argv) = 0;
 };

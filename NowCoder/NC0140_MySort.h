@@ -11,7 +11,7 @@
 class NC0140_MySort : public INowCoderEntry
 {
 public:
-    int MainEntry() override
+    int MainEntry(int argc, char **argv) override
     {
         std::cout << "NC0140_MySort --> MainEntry" << std::endl;
 

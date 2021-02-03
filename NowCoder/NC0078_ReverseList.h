@@ -6,7 +6,7 @@
 class NC0078_ReverseList : public INowCoderEntry
 {
 public:
-    int MainEntry() override
+    int MainEntry(int argc, char **argv) override
     {
         std::cout << "NC78_ReverseList --> MainEntry" << std::endl;
 

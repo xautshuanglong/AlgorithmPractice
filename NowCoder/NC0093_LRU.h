@@ -18,7 +18,7 @@ public:
         DListNode(int k, int v) : key(k), val(v), pre(nullptr), next(nullptr) {};
     };
 
-    int MainEntry() override
+    int MainEntry(int argc, char **argv) override
     {
         std::cout << "NC93_LRU --> MainEntry" << std::endl;
 

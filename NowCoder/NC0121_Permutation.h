@@ -9,10 +9,9 @@
 class NC0121_Permutation : public INowCoderEntry
 {
 public:
-    int MainEntry() override
+    int MainEntry(int argc, char **argv) override
     {
         std::cout << "NC0121_Permutation --> MainEntry" << std::endl;
-
         std::string inputStr = "ab";
         std::vector<std::string> reuslt = this->Permutation(inputStr);
         NowCoderVectorPrint(reuslt);
