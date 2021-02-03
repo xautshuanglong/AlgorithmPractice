@@ -340,8 +340,10 @@ public:
      **********************************************************************************************************/
     std::vector<int> MySort_Quick(std::vector<int> &arr)
     {
+        //Runoob 菜鸟教程
+        this->Runoob_QuickSort(arr, 0, (int)arr.size() - 1);
         //递归版本
-        this->Recursive_Quick(arr, 0, (int)arr.size() - 1);
+        //this->Recursive_Quick(arr, 0, (int)arr.size() - 1);
         //非递归版本
         return arr;
     }
@@ -493,6 +495,36 @@ private:
             // 递归处理子分区
             Recursive_Quick(arr, left, partIndex - 1);
             Recursive_Quick(arr, partIndex + 1, right);
+        }
+    }
+
+    int Runoob_Paritition(std::vector<int> &A, int low, int high)
+    {
+        int pivot = A[low];
+        while (low < high)
+        {
+            while (low < high && A[high] >= pivot)
+            {
+                --high;
+            }
+            A[low] = A[high];
+            while (low < high && A[low] <= pivot)
+            {
+                ++low;
+            }
+            A[high] = A[low];
+        }
+        A[low] = pivot;
+        return low;
+    }
+
+    void Runoob_QuickSort(std::vector<int> &A, int low, int high)
+    {
+        if (low < high)
+        {
+            int pivot = Runoob_Paritition(A, low, high);
+            Runoob_QuickSort(A, low, pivot - 1);
+            Runoob_QuickSort(A, pivot + 1, high);
         }
     }
 };
