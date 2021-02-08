@@ -5,18 +5,57 @@
 #include "NC0121_Permutation.h"
 #include "NC0140_MySort.h"
 
+void AddConsoleHandler();
+void RemoveConsoleHandler();
+void InitSignalHandler();
+
 BOOL WINAPI ConsoleHandlerRoutine(DWORD dwCtrlType);
 void WINAPI SignalHandler(int sigCode);
 
 int main(int argc, char** argv)
 {
     // 控制台事件捕获测试
+    AddConsoleHandler();
+    // 中断信号捕获测试
+    //InitSignalHandler();
+
+    //NC0078_ReverseList     instance;
+    //NC0093_LRU             instance;
+    //NC0140_MySort          instance;
+    NC0121_Permutation     instance;
+
+    INowCoderEntry *pNowCoderEntry = &instance;
+    int exitCode = pNowCoderEntry->MainEntry(argc, argv);
+
+    getchar();
+    getchar();
+
+    RemoveConsoleHandler();
+
+    std::cout << "Will exit main function ..." << std::endl;
+    return exitCode;
+}
+
+void AddConsoleHandler()
+{
     BOOL res = SetConsoleCtrlHandler(ConsoleHandlerRoutine, TRUE);
     if (!res)
     {
         std::cout << "SetConsoleCtrlHandler Add failed! Main.cpp" << std::endl;
     }
-    // 中断信号捕获测试
+}
+
+void RemoveConsoleHandler()
+{
+    BOOL res = SetConsoleCtrlHandler(ConsoleHandlerRoutine, FALSE);
+    if (!res)
+    {
+        std::cout << "SetConsoleCtrlHandler Delete failed! Main.cpp" << std::endl;
+    }
+}
+
+void InitSignalHandler()
+{
     _crt_signal_t pRetValue = signal(SIGINT, SignalHandler);
     if (pRetValue != SIG_ERR)
     {
@@ -46,26 +85,6 @@ int main(int argc, char** argv)
     {
         std::cout << "Set Signal Handler failed! ErrorCode:" << errno << " Main.cpp" << std::endl;
     }
-
-    //NC0078_ReverseList     instance;
-    //NC0093_LRU             instance;
-    //NC0140_MySort          instance;
-    NC0121_Permutation     instance;
-
-    INowCoderEntry *pNowCoderEntry = &instance;
-    int exitCode = pNowCoderEntry->MainEntry(argc, argv);
-
-    getchar();
-    getchar();
-
-    res = SetConsoleCtrlHandler(ConsoleHandlerRoutine, FALSE);
-    if (!res)
-    {
-        std::cout << "SetConsoleCtrlHandler Delete failed! Main.cpp" << std::endl;
-    }
-
-    std::cout << "Will exit main function ..." << std::endl;
-    return exitCode;
 }
 
 BOOL WINAPI ConsoleHandlerRoutine(DWORD dwCtrlType)
@@ -81,14 +100,18 @@ BOOL WINAPI ConsoleHandlerRoutine(DWORD dwCtrlType)
     // 4 is reserved!
     // #define CTRL_LOGOFF_EVENT   5
     // #define CTRL_SHUTDOWN_EVENT 6
+
+    BOOL retValue = FALSE;
     std::cout << "Inside function ConsoleHandlerRoutine Main.cpp" << std::endl;
     switch (dwCtrlType)
     {
     case CTRL_C_EVENT:
         std::cout << "Console handler captured: Control + C" << std::endl;
+        retValue = TRUE;
         break;
     case CTRL_BREAK_EVENT:
         std::cout << "Console handler captured: Control + Break" << std::endl;
+        retValue = TRUE;
         break;
     case CTRL_CLOSE_EVENT:
         std::cout << "Console handler captured: Control + Close" << std::endl;
@@ -103,7 +126,7 @@ BOOL WINAPI ConsoleHandlerRoutine(DWORD dwCtrlType)
         break;
     }
 
-    return FALSE;
+    return retValue;
 }
 
 void SignalHandler(int sigCode)
