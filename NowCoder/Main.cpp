@@ -17,7 +17,7 @@ int main(int argc, char** argv)
     // 控制台事件捕获测试
     AddConsoleHandler();
     // 中断信号捕获测试
-    //InitSignalHandler();
+    InitSignalHandler();
 
     //NC0078_ReverseList     instance;
     //NC0093_LRU             instance;
@@ -27,6 +27,9 @@ int main(int argc, char** argv)
     INowCoderEntry *pNowCoderEntry = &instance;
     int exitCode = pNowCoderEntry->MainEntry(argc, argv);
 
+    getchar();
+    getchar();
+    getchar();
     getchar();
     getchar();
 
