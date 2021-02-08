@@ -5,9 +5,20 @@
 #include "NC0121_Permutation.h"
 #include "NC0140_MySort.h"
 
+BOOL gEventLoopFlag = TRUE;
+HANDLE ghStdin = INVALID_HANDLE_VALUE;
+DWORD gdwStdinModeOld = 0;
+
 void AddConsoleHandler();
 void RemoveConsoleHandler();
 void InitSignalHandler();
+void ConsoleInputEventLoop();
+
+void KeyEventHandler(KEY_EVENT_RECORD keyEventRecord);
+void MouseEventHandler(MOUSE_EVENT_RECORD mouseEventRecord);
+void ResizeEventHandler(WINDOW_BUFFER_SIZE_RECORD resizeEventRecord);
+void FocusEventHandler(FOCUS_EVENT_RECORD focusEventRecord);
+void MenuEventHandler(MENU_EVENT_RECORD menuEventRecord);
 
 BOOL WINAPI ConsoleHandlerRoutine(DWORD dwCtrlType);
 void WINAPI SignalHandler(int sigCode);
@@ -27,11 +38,8 @@ int main(int argc, char** argv)
     INowCoderEntry *pNowCoderEntry = &instance;
     int exitCode = pNowCoderEntry->MainEntry(argc, argv);
 
-    getchar();
-    getchar();
-    getchar();
-    getchar();
-    getchar();
+    // 控制台输入事件测试
+    ConsoleInputEventLoop();
 
     RemoveConsoleHandler();
 
@@ -90,6 +98,190 @@ void InitSignalHandler()
     }
 }
 
+void ConsoleInputEventLoop()
+{
+    BOOL resultFlag = 0;
+    ghStdin = GetStdHandle(STD_INPUT_HANDLE);
+    if (ghStdin == INVALID_HANDLE_VALUE)
+    {
+        std::cout << "GetStdHandle failed! ConsoleInputEventLoop Main.cpp" << std::endl;
+        return;
+    }
+    resultFlag = GetConsoleMode(ghStdin, &gdwStdinModeOld);
+    if (!resultFlag)
+    {
+        std::cout << "GetConsoleMode failed! ConsoleInputEventLoop Main.cpp" << std::endl;
+        return;
+    }
+
+    DWORD dwConsoleMode = ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT;// | ENABLE_EXTENDED_FLAGS; // 使用 ENABLE_EXTENDED_FLAGS 或者手动改变控制台窗口属性，取消快速编辑选项。
+    resultFlag = SetConsoleMode(ghStdin, dwConsoleMode);
+    if (!resultFlag)
+    {
+        std::cout << "SetConsoleMode failed! ConsoleInputEventLoop Main.cpp" << std::endl;
+        return;
+    }
+
+    int counter = 0;
+    DWORD numOfEventRead = 0;
+    INPUT_RECORD inputBuffer[128];
+    while (gEventLoopFlag)
+    {
+        resultFlag = ReadConsoleInput(ghStdin, inputBuffer, 128, &numOfEventRead);
+        if (!resultFlag)
+        {
+            std::cout << "ReadConsoleInput failed! ConsoleInputEventLoop Main.cpp" << std::endl;
+            return;
+        }
+        for (DWORD i = 0; i < numOfEventRead; ++i)
+        {
+            WORD eventType = inputBuffer[i].EventType;
+            switch (eventType)
+            {
+            case KEY_EVENT:
+                KeyEventHandler(inputBuffer[i].Event.KeyEvent);
+                break;
+            case MOUSE_EVENT:
+                MouseEventHandler(inputBuffer[i].Event.MouseEvent);
+                break;
+            case WINDOW_BUFFER_SIZE_EVENT:
+                ResizeEventHandler(inputBuffer[i].Event.WindowBufferSizeEvent);
+                break;
+            case FOCUS_EVENT:
+                FocusEventHandler(inputBuffer[i].Event.FocusEvent);
+                break;
+            case MENU_EVENT:
+                MenuEventHandler(inputBuffer[i].Event.MenuEvent);
+                break;
+            default:
+                std::cout << "Unknown input event! ConsoleInputEventLoop Main.cpp" << std::endl;
+                break;
+            }
+        }
+    }
+    SetConsoleMode(ghStdin, gdwStdinModeOld);
+}
+
+void KeyEventHandler(KEY_EVENT_RECORD keyEventRecord)
+{
+    //
+    // ControlKeyState flags
+    //
+
+    // #define RIGHT_ALT_PRESSED     0x0001 // the right alt key is pressed.
+    // #define LEFT_ALT_PRESSED      0x0002 // the left alt key is pressed.
+    // #define RIGHT_CTRL_PRESSED    0x0004 // the right ctrl key is pressed.
+    // #define LEFT_CTRL_PRESSED     0x0008 // the left ctrl key is pressed.
+    // #define SHIFT_PRESSED         0x0010 // the shift key is pressed.
+    // #define NUMLOCK_ON            0x0020 // the numlock light is on.
+    // #define SCROLLLOCK_ON         0x0040 // the scrolllock light is on.
+    // #define CAPSLOCK_ON           0x0080 // the capslock light is on.
+    // #define ENHANCED_KEY          0x0100 // the key is enhanced.
+    // #define NLS_DBCSCHAR          0x00010000 // DBCS for JPN: SBCS/DBCS mode.
+    // #define NLS_ALPHANUMERIC      0x00000000 // DBCS for JPN: Alphanumeric mode.
+    // #define NLS_KATAKANA          0x00020000 // DBCS for JPN: Katakana mode.
+    // #define NLS_HIRAGANA          0x00040000 // DBCS for JPN: Hiragana mode.
+    // #define NLS_ROMAN             0x00400000 // DBCS for JPN: Roman/Noroman mode.
+    // #define NLS_IME_CONVERSION    0x00800000 // DBCS for JPN: IME conversion.
+    // #define ALTNUMPAD_BIT         0x04000000 // AltNumpad OEM char (copied from ntuser\inc\kbd.h) ;internal_NT
+    // #define NLS_IME_DISABLE       0x20000000 // DBCS for JPN: IME enable/disable.
+
+    std::cout << "Inside function KeyEventHandler: "
+        << keyEventRecord.wVirtualKeyCode
+        << " (" << keyEventRecord.uChar.AsciiChar << ") "
+        << " ["
+        << (keyEventRecord.dwControlKeyState & RIGHT_ALT_PRESSED ? " RIGHT_ALT_PRESSED" : "")
+        << (keyEventRecord.dwControlKeyState & LEFT_ALT_PRESSED ? " LEFT_ALT_PRESSED" : "")
+        << (keyEventRecord.dwControlKeyState & RIGHT_CTRL_PRESSED ? " RIGHT_CTRL_PRESSED" : "")
+        << (keyEventRecord.dwControlKeyState & LEFT_CTRL_PRESSED ? " LEFT_CTRL_PRESSED" : "")
+        << (keyEventRecord.dwControlKeyState & SHIFT_PRESSED ? " SHIFT_PRESSED" : "")
+        << (keyEventRecord.dwControlKeyState & NUMLOCK_ON ? " NUMLOCK_ON" : "")
+        << (keyEventRecord.dwControlKeyState & SCROLLLOCK_ON ? " SCROLLLOCK_ON" : "")
+        << (keyEventRecord.dwControlKeyState & CAPSLOCK_ON ? " CAPSLOCK_ON" : "")
+        << (keyEventRecord.dwControlKeyState & ENHANCED_KEY ? " ENHANCED_KEY" : "")
+        << (keyEventRecord.dwControlKeyState & NLS_DBCSCHAR ? " NLS_DBCSCHAR" : "")
+        << (keyEventRecord.dwControlKeyState & NLS_ALPHANUMERIC ? " NLS_ALPHANUMERIC" : "")
+        << (keyEventRecord.dwControlKeyState & NLS_KATAKANA ? " NLS_KATAKANA" : "")
+        << (keyEventRecord.dwControlKeyState & NLS_HIRAGANA ? " NLS_HIRAGANA" : "")
+        << (keyEventRecord.dwControlKeyState & NLS_ROMAN ? " NLS_ROMAN" : "")
+        << (keyEventRecord.dwControlKeyState & NLS_IME_CONVERSION ? " NLS_IME_CONVERSION" : "")
+        << (keyEventRecord.dwControlKeyState & ALTNUMPAD_BIT ? " ALTNUMPAD_BIT" : "")
+        << (keyEventRecord.dwControlKeyState & NLS_IME_DISABLE ? " NLS_IME_DISABLE" : "")
+        << " ] "
+        << (keyEventRecord.bKeyDown ? "pressed" : "released")
+        << std::endl;
+
+    if (keyEventRecord.wVirtualKeyCode == 'H' && !keyEventRecord.bKeyDown)
+    {
+        DWORD consoleMode = 0;
+        GetConsoleMode(ghStdin, &consoleMode);
+        if (consoleMode & ENABLE_MOUSE_INPUT)
+        {
+            std::cout << "--> ENABLE_MOUSE_INPUT" << std::endl;
+        }
+        else
+        {
+            std::cout << "--> DISABLE_MOUSE_INPUT" << std::endl;
+        }
+    }
+}
+
+void MouseEventHandler(MOUSE_EVENT_RECORD mouseEventRecord)
+{
+    switch (mouseEventRecord.dwEventFlags)
+    {
+    case 0:
+        if (mouseEventRecord.dwButtonState == FROM_LEFT_1ST_BUTTON_PRESSED)
+        {
+            std::cout << "Inside function MouseEventHandler: Left Button Pressed" << std::endl;
+        }
+        else if (mouseEventRecord.dwButtonState == RIGHTMOST_BUTTON_PRESSED)
+        {
+            std::cout << "Inside function MouseEventHandler: Right Button Pressed" << std::endl;
+        }
+        else
+        {
+            std::cout << "Inside function MouseEventHandler: Button Pressed" << std::endl;
+        }
+        break;
+    case DOUBLE_CLICK:
+        std::cout << "Inside function MouseEventHandler: DOUBLE_CLICK" << std::endl;
+        break;
+    case MOUSE_HWHEELED:
+        std::cout << "Inside function MouseEventHandler: MOUSE_HWHEELED" << std::endl;
+        break;
+    case MOUSE_MOVED:
+        std::cout << "Inside function MouseEventHandler: MOUSE_MOVED ("
+            << mouseEventRecord.dwMousePosition.X << ", "
+            << mouseEventRecord.dwMousePosition.Y <<")"
+            << "\r";
+        //<< std::endl;
+        break;
+    case MOUSE_WHEELED:
+        std::cout << "Inside function MouseEventHandler: MOUSE_WHEELED" << std::endl;
+        break;
+    default:
+        std::cout << "Inside function MouseEventHandler: UNKNOWN" << std::endl;
+        break;
+    }
+}
+
+void ResizeEventHandler(WINDOW_BUFFER_SIZE_RECORD resizeEventRecord)
+{
+    std::cout << "Inside function ResizeEventHandler : "
+        << resizeEventRecord.dwSize.X << " columns "
+        << resizeEventRecord.dwSize.Y << " rows"
+        << std::endl;
+}
+
+void FocusEventHandler(FOCUS_EVENT_RECORD focusEventRecord)
+{
+}
+
+void MenuEventHandler(MENU_EVENT_RECORD menuEventRecord)
+{
+}
+
 BOOL WINAPI ConsoleHandlerRoutine(DWORD dwCtrlType)
 {
     //
@@ -109,8 +301,9 @@ BOOL WINAPI ConsoleHandlerRoutine(DWORD dwCtrlType)
     switch (dwCtrlType)
     {
     case CTRL_C_EVENT:
-        std::cout << "Console handler captured: Control + C" << std::endl;
         retValue = TRUE;
+        gEventLoopFlag = FALSE;
+        std::cout << "Console handler captured: Control + C" << std::endl;
         //Beep(5000, 1000);
         break;
     case CTRL_BREAK_EVENT:
@@ -161,6 +354,7 @@ void SignalHandler(int sigCode)
         std::cout << "Signal handler captured: SIGTERM" << std::endl;
         break;
     case SIGBREAK:
+        gEventLoopFlag = FALSE;
         std::cout << "Signal handler captured: SIGBREAK" << std::endl;
         break;
     case SIGABRT:
