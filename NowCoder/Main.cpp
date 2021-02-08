@@ -108,6 +108,7 @@ BOOL WINAPI ConsoleHandlerRoutine(DWORD dwCtrlType)
     case CTRL_C_EVENT:
         std::cout << "Console handler captured: Control + C" << std::endl;
         retValue = TRUE;
+        //Beep(5000, 1000);
         break;
     case CTRL_BREAK_EVENT:
         std::cout << "Console handler captured: Control + Break" << std::endl;
