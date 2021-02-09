@@ -115,7 +115,7 @@ void ConsoleInputEventLoop()
         return;
     }
 
-    DWORD dwConsoleMode = ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT;// | ENABLE_EXTENDED_FLAGS; // 使用 ENABLE_EXTENDED_FLAGS 或者手动改变控制台窗口属性，取消快速编辑选项。
+    DWORD dwConsoleMode = ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT | ENABLE_PROCESSED_INPUT | ENABLE_EXTENDED_FLAGS; // 使用 ENABLE_EXTENDED_FLAGS 或者手动改变控制台窗口属性，取消快速编辑选项。
     resultFlag = SetConsoleMode(ghStdin, dwConsoleMode);
     if (!resultFlag)
     {
@@ -128,7 +128,7 @@ void ConsoleInputEventLoop()
     INPUT_RECORD inputBuffer[128];
     while (gEventLoopFlag)
     {
-        resultFlag = ReadConsoleInput(ghStdin, inputBuffer, 128, &numOfEventRead);
+        resultFlag = ReadConsoleInput(ghStdin, inputBuffer, 128, &numOfEventRead); // PeekConsoleInput 读取事件不移除，造成死循环。
         if (!resultFlag)
         {
             std::cout << "ReadConsoleInput failed! ConsoleInputEventLoop Main.cpp" << std::endl;
@@ -161,6 +161,8 @@ void ConsoleInputEventLoop()
         }
     }
     SetConsoleMode(ghStdin, gdwStdinModeOld);
+    CloseHandle(ghStdin);
+    ghStdin = INVALID_HANDLE_VALUE;
 }
 
 void KeyEventHandler(KEY_EVENT_RECORD keyEventRecord)
@@ -212,21 +214,22 @@ void KeyEventHandler(KEY_EVENT_RECORD keyEventRecord)
         << (keyEventRecord.bKeyDown ? "pressed" : "released")
         << std::endl;
 
-    if (keyEventRecord.wVirtualKeyCode == 'H' && !keyEventRecord.bKeyDown)
-    {
-        DWORD consoleMode = 0;
-        GetConsoleMode(ghStdin, &consoleMode);
-        if (consoleMode & ENABLE_MOUSE_INPUT)
-        {
-            std::cout << "--> ENABLE_MOUSE_INPUT" << std::endl;
-        }
-        else
-        {
-            std::cout << "--> DISABLE_MOUSE_INPUT" << std::endl;
-        }
-    }
+    //if (keyEventRecord.wVirtualKeyCode == 'H' && !keyEventRecord.bKeyDown)
+    //{
+    //    DWORD consoleMode = 0;
+    //    GetConsoleMode(ghStdin, &consoleMode);
+    //    if (consoleMode & ENABLE_MOUSE_INPUT)
+    //    {
+    //        std::cout << "--> ENABLE_MOUSE_INPUT" << std::endl;
+    //    }
+    //    else
+    //    {
+    //        std::cout << "--> DISABLE_MOUSE_INPUT" << std::endl;
+    //    }
+    //}
 }
 
+// 无法捕获 MK_XBUTTON1-2 （鼠标前进后退键） Key State Masks for Mouse Messages
 void MouseEventHandler(MOUSE_EVENT_RECORD mouseEventRecord)
 {
     static DWORD oldButtonState = 0;
@@ -310,7 +313,6 @@ void MouseEventHandler(MOUSE_EVENT_RECORD mouseEventRecord)
             << mouseEventRecord.dwMousePosition.X << ", "
             << mouseEventRecord.dwMousePosition.Y <<")"
             << "\r";
-        //<< std::endl;
         break;
     case MOUSE_WHEELED:
         std::cout << "Inside function MouseEventHandler: MOUSE_WHEELED" << std::endl;
@@ -331,10 +333,16 @@ void ResizeEventHandler(WINDOW_BUFFER_SIZE_RECORD resizeEventRecord)
 
 void FocusEventHandler(FOCUS_EVENT_RECORD focusEventRecord)
 {
+    std::cout << "Inside function FocusEventHandler: " 
+        << (focusEventRecord.bSetFocus ? "FOCUS" : "NOFOCUS")
+        <<" Main.cpp" << std::endl;
 }
 
 void MenuEventHandler(MENU_EVENT_RECORD menuEventRecord)
 {
+    std::cout << "Inside function MenuEventHandler: "
+        << menuEventRecord.dwCommandId
+        << " Main.cpp" << std::endl;
 }
 
 BOOL WINAPI ConsoleHandlerRoutine(DWORD dwCtrlType)
@@ -362,6 +370,7 @@ BOOL WINAPI ConsoleHandlerRoutine(DWORD dwCtrlType)
         //Beep(5000, 1000);
         break;
     case CTRL_BREAK_EVENT:
+        gEventLoopFlag = FALSE;
         std::cout << "Console handler captured: Control + Break" << std::endl;
         retValue = TRUE;
         break;
@@ -394,6 +403,7 @@ void SignalHandler(int sigCode)
     switch (sigCode)
     {
     case SIGINT:
+        gEventLoopFlag = FALSE;
         std::cout << "Signal handler captured: SIGINT" << std::endl;
         break;
     case SIGILL:
