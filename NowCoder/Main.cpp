@@ -1,4 +1,5 @@
 #include <csignal>
+#include <iomanip>
 
 #include "NC0078_ReverseList.h"
 #include "NC0093_LRU.h"
@@ -228,21 +229,75 @@ void KeyEventHandler(KEY_EVENT_RECORD keyEventRecord)
 
 void MouseEventHandler(MOUSE_EVENT_RECORD mouseEventRecord)
 {
+    static DWORD oldButtonState = 0;
+    DWORD changedButtonState = 0;
+
     switch (mouseEventRecord.dwEventFlags)
     {
-    case 0:
-        if (mouseEventRecord.dwButtonState == FROM_LEFT_1ST_BUTTON_PRESSED)
+    case 0: // If this value is zero, it indicates a mouse button being pressed or released.
+        changedButtonState = oldButtonState ^ mouseEventRecord.dwButtonState;
+        oldButtonState = mouseEventRecord.dwButtonState;
+        std::cout << "Inside function MouseEventHandler ("
+            << "0x" << std::hex << std::setw(4) << std::setfill('0') << mouseEventRecord.dwButtonState
+            << "): [ ";
+        if (changedButtonState & FROM_LEFT_1ST_BUTTON_PRESSED)
         {
-            std::cout << "Inside function MouseEventHandler: Left Button Pressed" << std::endl;
+            if (mouseEventRecord.dwButtonState & FROM_LEFT_1ST_BUTTON_PRESSED)
+            {
+                std::cout << "Press LEFT_1ST";
+            }
+            else
+            {
+                std::cout << "Release LEFT_1ST";
+            }
         }
-        else if (mouseEventRecord.dwButtonState == RIGHTMOST_BUTTON_PRESSED)
+        if (changedButtonState & FROM_LEFT_2ND_BUTTON_PRESSED)
         {
-            std::cout << "Inside function MouseEventHandler: Right Button Pressed" << std::endl;
+            if (mouseEventRecord.dwButtonState & FROM_LEFT_2ND_BUTTON_PRESSED)
+            {
+                std::cout << "Press LEFT_2ND";
+            }
+            else
+            {
+                std::cout << "Release LEFT_2ND";
+            }
         }
-        else
+        if (changedButtonState & FROM_LEFT_3RD_BUTTON_PRESSED)
         {
-            std::cout << "Inside function MouseEventHandler: Button Pressed" << std::endl;
+            if (mouseEventRecord.dwButtonState & FROM_LEFT_3RD_BUTTON_PRESSED)
+            {
+                std::cout << "Press LEFT_3RD";
+            }
+            else
+            {
+                std::cout << "Release LEFT_3RD";
+            }
         }
+        if (changedButtonState & FROM_LEFT_4TH_BUTTON_PRESSED)
+        {
+            if (mouseEventRecord.dwButtonState & FROM_LEFT_4TH_BUTTON_PRESSED)
+            {
+                std::cout << "Press LEFT_4TH";
+            }
+            else
+            {
+                std::cout << "Release LEFT_4TH";
+            }
+        }
+        if (changedButtonState & RIGHTMOST_BUTTON_PRESSED)
+        {
+            if (mouseEventRecord.dwButtonState & RIGHTMOST_BUTTON_PRESSED)
+            {
+                std::cout << "Press RIGHT";
+            }
+            else
+            {
+                std::cout << "Release RIGHT";
+            }
+        }
+        std::cout << "]";
+        std::cout << std::endl;
+        std::cout << std::dec;
         break;
     case DOUBLE_CLICK:
         std::cout << "Inside function MouseEventHandler: DOUBLE_CLICK" << std::endl;
