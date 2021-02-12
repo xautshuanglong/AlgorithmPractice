@@ -40,7 +40,7 @@ int main(int argc, char** argv)
     int exitCode = pNowCoderEntry->MainEntry(argc, argv);
 
     // 控制台输入事件测试
-    ConsoleInputEventLoop();
+    //ConsoleInputEventLoop();
 
     RemoveConsoleHandler();
 
