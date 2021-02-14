@@ -13,6 +13,8 @@ DWORD gdwStdinModeOld = 0;
 void AddConsoleHandler();
 void RemoveConsoleHandler();
 void InitSignalHandler();
+void UninitSignalHandler();
+void ConsoleSimpleLoop();
 void ConsoleInputEventLoop();
 
 void KeyEventHandler(KEY_EVENT_RECORD keyEventRecord);
@@ -41,7 +43,10 @@ int main(int argc, char** argv)
 
     // 控制台输入事件测试
     //ConsoleInputEventLoop();
+    // 控制台简单循环
+    ConsoleSimpleLoop();
 
+    UninitSignalHandler();
     RemoveConsoleHandler();
 
     std::cout << "Will exit main function ..." << std::endl;
@@ -97,6 +102,27 @@ void InitSignalHandler()
     {
         std::cout << "Set Signal Handler failed! ErrorCode:" << errno << " Main.cpp" << std::endl;
     }
+}
+
+void UninitSignalHandler()
+{
+    signal(SIGINT, SIG_DFL);
+    signal(SIGILL, SIG_DFL);
+    signal(SIGFPE, SIG_DFL);
+    signal(SIGSEGV, SIG_DFL);
+    signal(SIGTERM, SIG_DFL);
+    signal(SIGBREAK, SIG_DFL);
+    signal(SIGABRT, SIG_DFL);
+}
+
+void ConsoleSimpleLoop()
+{
+    while (gEventLoopFlag)
+    {
+        Sleep(200);
+    }
+    std::cout << "Press any key to exit simple loop!" << std::endl;
+    getchar();
 }
 
 void ConsoleInputEventLoop()
