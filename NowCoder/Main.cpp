@@ -122,7 +122,7 @@ void ConsoleSimpleLoop()
         Sleep(200);
     }
     std::cout << "Press any key to exit simple loop!" << std::endl;
-    getchar();
+    int inValue = getchar();
 }
 
 void ConsoleInputEventLoop()
