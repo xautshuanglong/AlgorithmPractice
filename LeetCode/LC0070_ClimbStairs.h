@@ -92,4 +92,6 @@ private:
 * Á½Êý½»»»
 * a       b
 * a = a ^ b
+* b = a ^ b
+* a = a ^ b
 */
