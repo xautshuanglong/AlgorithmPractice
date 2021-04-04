@@ -32,5 +32,8 @@
     <ClInclude Include="LC0121_MaxProfit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LC0070_ClimbStairs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

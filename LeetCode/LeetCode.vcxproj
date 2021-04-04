@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ILeetCodeEntry.h" />
+    <ClInclude Include="LC0070_ClimbStairs.h" />
     <ClInclude Include="LC0121_MaxProfit.h" />
     <ClInclude Include="LeetCodeDefines.h" />
     <ClInclude Include="SwordOffer_042_MaxSubArray.h" />

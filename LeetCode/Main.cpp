@@ -3,11 +3,13 @@
 
 #include "SwordOffer_042_MaxSubArray.h"
 #include "LC0121_MaxProfit.h"
+#include "LC0070_ClimbStairs.h"
 
 int main()
 {
     //SwordOffer_042_MaxSubArray   instance;
-    LC0121_MaxProfit             instance;
+    //LC0121_MaxProfit             instance;
+    LC0070_ClimbStairs           instance;
 
     ILeetCodeEntry *pLeetCodeEntry = &instance;
     return pLeetCodeEntry->MainEntry();
