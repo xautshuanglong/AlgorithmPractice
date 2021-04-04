@@ -55,8 +55,6 @@ public:
 
     int ClimbStairs_LessMemory(int nStep)
     {
-        int retValue = 0;
-
         if (nStep == 1)
         {
             return 1;
@@ -69,12 +67,11 @@ public:
         int a = 1, b = 2;
         for (int i = 3; i <= nStep; ++i)
         {
-            retValue = a + b;
-            a = b;
-            b = retValue;
+            b = a + b;
+            a = b - a;
         }
 
-        return retValue;
+        return b;
     }
 
 private:
@@ -89,4 +86,10 @@ private:
 * 4          n(4-1)  +  n(4-2)       n(3) + n(2)  = 3 + 2 = 5
 * ...        ...     +  ...
 * x          n(x-1)  +  n(x-2)
+*/
+
+/*
+* Á½Êý½»»»
+* a       b
+* a = a ^ b
 */
