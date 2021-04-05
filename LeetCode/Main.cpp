@@ -1,15 +1,20 @@
 // LeetCode.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
+#include "SwordOffer_010_I_Fibonacci.h"
+#include "SwordOffer_010_II_FrogJumpStairs.h"
 #include "SwordOffer_042_MaxSubArray.h"
+
 #include "LC0121_MaxProfit.h"
 #include "LC0070_ClimbStairs.h"
 
 int main()
 {
-    //SwordOffer_042_MaxSubArray   instance;
-    //LC0121_MaxProfit             instance;
-    LC0070_ClimbStairs           instance;
+    //SwordOffer_042_MaxSubArray       instance;
+    SwordOffer_010_I_Fibonacci       instance;
+    //SwordOffer_010_II_FrogJumpStairs instance;
+    //LC0121_MaxProfit                 instance;
+    //LC0070_ClimbStairs               instance;
 
     ILeetCodeEntry *pLeetCodeEntry = &instance;
     return pLeetCodeEntry->MainEntry();

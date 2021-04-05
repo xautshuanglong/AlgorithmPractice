@@ -35,5 +35,11 @@
     <ClInclude Include="LC0070_ClimbStairs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SwordOffer_010_I_Fibonacci.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SwordOffer_010_II_FrogJumpStairs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
