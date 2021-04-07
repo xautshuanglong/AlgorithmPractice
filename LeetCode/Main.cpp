@@ -11,8 +11,8 @@
 int main()
 {
     //SwordOffer_042_MaxSubArray       instance;
-    SwordOffer_010_I_Fibonacci       instance;
-    //SwordOffer_010_II_FrogJumpStairs instance;
+    //SwordOffer_010_I_Fibonacci       instance;
+    SwordOffer_010_II_FrogJumpStairs instance;
     //LC0121_MaxProfit                 instance;
     //LC0070_ClimbStairs               instance;
 
