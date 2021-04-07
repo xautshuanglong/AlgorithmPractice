@@ -7,6 +7,7 @@
 
 #include "LC0121_MaxProfit.h"
 #include "LC0070_ClimbStairs.h"
+#include "LC0081_SearchRotateArray.h"
 #include "LC0746_MinimalCostClimbingStairs.h"
 
 int main()
@@ -16,7 +17,8 @@ int main()
     //SwordOffer_010_II_FrogJumpStairs instance;
     //LC0121_MaxProfit                 instance;
     //LC0070_ClimbStairs               instance;
-    LC0746_MinimalCostClimbingStairs instance;
+    //LC0746_MinimalCostClimbingStairs instance;
+    LC0081_SearchRotateArray         instance;
 
     ILeetCodeEntry *pLeetCodeEntry = &instance;
     return pLeetCodeEntry->MainEntry();
