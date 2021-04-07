@@ -7,6 +7,7 @@
 
 #include "LC0121_MaxProfit.h"
 #include "LC0070_ClimbStairs.h"
+#include "LC0746_MinimalCostClimbingStairs.h"
 
 int main()
 {
@@ -14,7 +15,8 @@ int main()
     //SwordOffer_010_I_Fibonacci       instance;
     //SwordOffer_010_II_FrogJumpStairs instance;
     //LC0121_MaxProfit                 instance;
-    LC0070_ClimbStairs               instance;
+    //LC0070_ClimbStairs               instance;
+    LC0746_MinimalCostClimbingStairs instance;
 
     ILeetCodeEntry *pLeetCodeEntry = &instance;
     return pLeetCodeEntry->MainEntry();

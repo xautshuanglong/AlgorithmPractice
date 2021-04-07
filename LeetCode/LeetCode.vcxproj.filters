@@ -41,5 +41,8 @@
     <ClInclude Include="SwordOffer_010_II_FrogJumpStairs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LC0746_MinimalCostClimbingStairs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

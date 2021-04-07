@@ -145,6 +145,7 @@
     <ClInclude Include="ILeetCodeEntry.h" />
     <ClInclude Include="LC0070_ClimbStairs.h" />
     <ClInclude Include="LC0121_MaxProfit.h" />
+    <ClInclude Include="LC0746_MinimalCostClimbingStairs.h" />
     <ClInclude Include="LeetCodeDefines.h" />
     <ClInclude Include="SwordOffer_010_II_FrogJumpStairs.h" />
     <ClInclude Include="SwordOffer_010_I_Fibonacci.h" />
