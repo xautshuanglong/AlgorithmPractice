@@ -39,6 +39,10 @@ public:
         std::cout << "LC0112_TreePathSum_I --> Result 3 : " << this->hasPathSum(root3, targetSum3) << std::endl;
         std::cout << "LC0112_TreePathSum_I --> Result 4 : " << this->hasPathSum(root4, targetSum4) << std::endl;
 
+        LeetCodeTreeNodeDestory(&root1);
+        LeetCodeTreeNodeDestory(&root2);
+        LeetCodeTreeNodeDestory(&root3);
+
         return 0;
     }
 

@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <vector>
 #include <queue>
+#include <stack>
 #include <map>
 #include <unordered_map>
 #include <string>
@@ -70,8 +71,50 @@ TreeNode *LeetCodeTreeNodeCreate(std::vector<int> &treeValues)
     return root;
 }
 
-void LeetCodeTreeNodeCreate(TreeNode *root)
+void LeetCodeTreeNodeDestory(TreeNode **root)
 {
+    if (root == nullptr) return;
+    TreeNode *tempNode = *root;
+    if (tempNode == nullptr) return;
+
+    std::stack<TreeNode *> broadTreeNode;
+    broadTreeNode.push(tempNode);
+
+    while (!broadTreeNode.empty())
+    {
+        tempNode = broadTreeNode.top();
+        if (tempNode->left == nullptr && tempNode->right == nullptr)
+        {
+            broadTreeNode.pop();
+        }
+        if (tempNode->left != nullptr)
+        {
+            if (tempNode->left->left == nullptr && tempNode->left->right == nullptr)
+            {
+                delete tempNode->left;
+                tempNode->left = nullptr;
+            }
+            else
+            {
+                broadTreeNode.push(tempNode->left);
+            }
+        }
+        if (tempNode->right != nullptr)
+        {
+            if (tempNode->right->left == nullptr && tempNode->right->right == nullptr)
+            {
+                delete tempNode->right;
+                tempNode->right = nullptr;
+            }
+            else
+            {
+                broadTreeNode.push(tempNode->right);
+            }
+        }
+    }
+
+    delete *root;
+    *root = nullptr;
 }
  
 void LeetCodeListNodeRelease(ListNode **ppHead)
