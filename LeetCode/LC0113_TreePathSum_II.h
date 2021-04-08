@@ -16,7 +16,7 @@ public:
         TreeNode *root1 = LeetCodeTreeNodeCreate(root1Vec);
         std::vector<std::vector<int>> result1 = this->pathSum(root1, targetSum1);
         std::cout << "LC0113_TreePathSum_II --> Result 1 : "<< std::endl;
-        // VectorPrint
+        LeetCodeVectorPrint(result1);
 
         // 输入：root = [1, 2, 3], targetSum = 5
         // 输出：[]
@@ -24,6 +24,7 @@ public:
         std::vector<int> root2Vec = { 1, 2, 3 };
         TreeNode *root2 = LeetCodeTreeNodeCreate(root2Vec);
         std::vector<std::vector<int>> result2 = this->pathSum(root2, targetSum2);
+        LeetCodeVectorPrint(result2);
 
         // 输入：root = [1, 2], targetSum = 0
         // 输出：[]
@@ -31,6 +32,7 @@ public:
         std::vector<int> root3Vec = { 1,2 };
         TreeNode *root3 = LeetCodeTreeNodeCreate(root3Vec);
         std::vector<std::vector<int>> result3 = this->pathSum(root3, targetSum3);
+        LeetCodeVectorPrint(result3);
 
         return 0;
     }

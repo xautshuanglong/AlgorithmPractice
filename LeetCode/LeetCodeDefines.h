@@ -197,3 +197,44 @@ void LeetCodeVectorPrint(std::vector<T> dataVec)
     std::cout << " ]";
     std::cout << std::endl;
 }
+
+template <class T>
+void LeetCodeVectorPrint(std::vector<std::vector<T>> dataVec)
+{
+    typename std::vector<std::vector<T>>::iterator begin = dataVec.begin();
+    typename std::vector<std::vector<T>>::iterator end = dataVec.end();
+    typename std::vector<std::vector<T>>::iterator iter = begin;
+
+    typename std::vector<T>::iterator childBegin;
+    typename std::vector<T>::iterator childEnd;
+    typename std::vector<T>::iterator childIter;
+
+    std::cout << "[ ";
+
+    while (iter != end)
+    {
+        if (iter != begin)
+        {
+            std::cout << ", ";
+        }
+
+        childBegin = iter->begin();
+        childEnd = iter->end();
+        childIter = childBegin;
+        std::cout << "[ ";
+        while (childIter != childEnd)
+        {
+            if (childIter != childBegin)
+            {
+                std::cout << ", ";
+            }
+            std::cout << *childIter;
+            ++childIter;
+        }
+        std::cout << " ]";
+        ++iter;
+    }
+
+    std::cout << " ]";
+    std::cout << std::endl;
+}
