@@ -38,6 +38,27 @@ public:
 public:
     std::vector<std::vector<int>> pathSum(TreeNode *root, int targetSum)
     {
-        return std::vector<std::vector<int>>();
+        std::vector<std::vector<int>> goodPaths;
+        std::vector<int> path;
+        this->traversalDFS(root, targetSum, 0, goodPaths, path);
+        return goodPaths;
+    }
+
+    void traversalDFS(TreeNode *root, int targetSum, int curSum, std::vector<std::vector<int>>&goodPaths, std::vector<int> &path)
+    {
+        if (root == nullptr)
+        {
+            return;
+        }
+        curSum += root->val;
+        path.push_back(root->val);
+        if (root->left == nullptr && root->right == nullptr && curSum == targetSum)
+        {
+            goodPaths.push_back(path);
+        }
+
+        traversalDFS(root->left, targetSum, curSum, goodPaths, path);
+        traversalDFS(root->right, targetSum, curSum, goodPaths, path);
+        path.pop_back();
     }
 };
