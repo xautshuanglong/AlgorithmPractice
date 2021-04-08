@@ -4,6 +4,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <queue>
 #include <map>
 #include <unordered_map>
 #include <string>
@@ -28,8 +29,52 @@ struct TreeNode
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
+
+TreeNode *LeetCodeTreeNodeCreate(std::vector<int> &treeValues)
+{
+    TreeNode *root = nullptr;
+    TreeNode *pTempNode = nullptr;
+    int treeValueCount = int(treeValues.size());
+    if (treeValueCount == 0 || treeValues[0] == INT_MIN)
+    {
+        return root;
+    }
+
+    int tempNodeIndex = 0, valueIndex = 0;
+    root = new TreeNode(treeValues[0]);
+    std::queue <TreeNode*> broadTreeNode;
+    broadTreeNode.push(root);
+
+    do 
+    {
+        pTempNode = broadTreeNode.front();
+        broadTreeNode.pop();
+        if (pTempNode != nullptr)
+        {
+            valueIndex = 2 * tempNodeIndex + 1;
+            if (valueIndex < treeValueCount && treeValues[valueIndex] != INT_MIN)
+            {
+                pTempNode->left = new TreeNode(treeValues[valueIndex]);
+            }
+            ++valueIndex;
+            if (valueIndex < treeValueCount && treeValues[valueIndex] != INT_MIN)
+            {
+                pTempNode->right = new TreeNode(treeValues[valueIndex]);
+            }
+            broadTreeNode.push(pTempNode->left);
+            broadTreeNode.push(pTempNode->right);
+            ++tempNodeIndex;
+        }
+    } while (!broadTreeNode.empty() && 2 * tempNodeIndex + 1 < treeValueCount);
+
+    return root;
+}
+
+void LeetCodeTreeNodeCreate(TreeNode *root)
+{
+}
  
-void NowCoderListNodeRelease(ListNode **ppHead)
+void LeetCodeListNodeRelease(ListNode **ppHead)
 {
     if (ppHead == NULL) return;
 
@@ -45,7 +90,7 @@ void NowCoderListNodeRelease(ListNode **ppHead)
     *ppHead = NULL;
 }
 
-void NowCoderListNodePrint(ListNode *pHead)
+void LeetCodeListNodePrint(ListNode *pHead)
 {
     ListNode *pTemp = pHead;
     std::cout << "{ ";
@@ -88,7 +133,7 @@ std::ostream& operator<<(std::ostream& outStream, std::vector<int> intVector)
 }
 
 template <class T>
-void NowCoderVectorPrint(std::vector<T> dataVec)
+void LeetCodeVectorPrint(std::vector<T> dataVec)
 {
     std::cout << "[ ";
 
