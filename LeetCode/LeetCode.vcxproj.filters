@@ -47,5 +47,14 @@
     <ClInclude Include="LC0081_SearchRotateArray.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LC0112_TreePathSum_I.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LC0113_TreePathSum_II.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LC0437_TreePathSum_III.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

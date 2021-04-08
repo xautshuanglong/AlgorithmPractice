@@ -145,7 +145,10 @@
     <ClInclude Include="ILeetCodeEntry.h" />
     <ClInclude Include="LC0070_ClimbStairs.h" />
     <ClInclude Include="LC0081_SearchRotateArray.h" />
+    <ClInclude Include="LC0112_TreePathSum_I.h" />
+    <ClInclude Include="LC0113_TreePathSum_II.h" />
     <ClInclude Include="LC0121_MaxProfit.h" />
+    <ClInclude Include="LC0437_TreePathSum_III.h" />
     <ClInclude Include="LC0746_MinimalCostClimbingStairs.h" />
     <ClInclude Include="LeetCodeDefines.h" />
     <ClInclude Include="SwordOffer_010_II_FrogJumpStairs.h" />
