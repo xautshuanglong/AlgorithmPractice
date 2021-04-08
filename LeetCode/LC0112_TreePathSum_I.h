@@ -3,7 +3,7 @@
 #include "LeetCodeDefines.h"
 #include "ILeetCodeEntry.h"
 
-class LC007LC0112_TreePathSum_I0_ClimbStairs : public ILeetCodeEntry
+class LC0112_TreePathSum_I : public ILeetCodeEntry
 {
 public:
     int MainEntry() override

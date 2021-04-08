@@ -5,8 +5,6 @@
 
 class LC0113_TreePathSum_II : public ILeetCodeEntry
 {
-#define MOD 1000000007
-
 public:
     int MainEntry() override
     {
@@ -32,7 +30,7 @@ public:
     }
 
 public:
-    std::vector<std::vector<int>> pathSum(TreeNode *root, int targetSum) {
+    std::vector<std::vector<int>> pathSum(TreeNode *root, int targetSum)
     {
         return std::vector<std::vector<int>>();
     }

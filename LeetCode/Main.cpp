@@ -8,6 +8,9 @@
 #include "LC0121_MaxProfit.h"
 #include "LC0070_ClimbStairs.h"
 #include "LC0081_SearchRotateArray.h"
+#include "LC0112_TreePathSum_I.h"
+#include "LC0113_TreePathSum_II.h"
+#include "LC0437_TreePathSum_III.h"
 #include "LC0746_MinimalCostClimbingStairs.h"
 
 int main()
@@ -18,7 +21,11 @@ int main()
     //LC0121_MaxProfit                 instance;
     //LC0070_ClimbStairs               instance;
     //LC0746_MinimalCostClimbingStairs instance;
-    LC0081_SearchRotateArray         instance;
+    //LC0081_SearchRotateArray         instance;
+    LC0112_TreePathSum_I             instance;
+    //LC0113_TreePathSum_II            instance;
+    //LC0437_TreePathSum_III           instance;
+
 
     ILeetCodeEntry *pLeetCodeEntry = &instance;
     return pLeetCodeEntry->MainEntry();

@@ -5,8 +5,6 @@
 
 class LC0437_TreePathSum_III : public ILeetCodeEntry
 {
-#define MOD 1000000007
-
 public:
     int MainEntry() override
     {
