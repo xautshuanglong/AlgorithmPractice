@@ -23,8 +23,8 @@ int main()
     //LC0746_MinimalCostClimbingStairs instance;
     //LC0081_SearchRotateArray         instance;
     //LC0112_TreePathSum_I             instance;
-    LC0113_TreePathSum_II            instance;
-    //LC0437_TreePathSum_III           instance;
+    //LC0113_TreePathSum_II            instance;
+    LC0437_TreePathSum_III           instance;
 
 
     ILeetCodeEntry *pLeetCodeEntry = &instance;
