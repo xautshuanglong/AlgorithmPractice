@@ -31,7 +31,8 @@ public:
         //return this->search1(nums, target);
         return this->search2(nums, target);
     }
-    bool search1(std::vector<int> &nums, int target) {
+    bool search1(std::vector<int> &nums, int target)
+    {
         int numsLen = int(nums.size());
         for (int i = 0; i < numsLen; ++i)
         {
@@ -44,7 +45,8 @@ public:
         return false;
     }
 
-    bool search2(std::vector<int> &nums, int target) {
+    bool search2(std::vector<int> &nums, int target)
+    {
         int numsLen = int(nums.size());
         int index = 0;
         for (int i = 0; i < numsLen; ++i)
