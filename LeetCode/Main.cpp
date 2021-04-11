@@ -6,10 +6,13 @@
 #include "SwordOffer_042_MaxSubArray.h"
 
 #include "LC0121_MaxProfit.h"
+#include "LC0033_SearchRotateArray_I.h"
 #include "LC0070_ClimbStairs.h"
-#include "LC0081_SearchRotateArray.h"
+#include "LC0081_SearchRotateArray_II.h"
 #include "LC0112_TreePathSum_I.h"
 #include "LC0113_TreePathSum_II.h"
+#include "LC0153_RotateArrayMin_I.h"
+#include "LC0154_RotateArrayMin_II.h"
 #include "LC0437_TreePathSum_III.h"
 #include "LC0637_TreeLevelAverage.h"
 #include "LC0746_MinimalCostClimbingStairs.h"
@@ -20,13 +23,16 @@ int main()
     //SwordOffer_010_I_Fibonacci       instance;
     //SwordOffer_010_II_FrogJumpStairs instance;
     //LC0121_MaxProfit                 instance;
+    LC0033_SearchRotateArray_I       instance;
     //LC0070_ClimbStairs               instance;
-    //LC0746_MinimalCostClimbingStairs instance;
-    //LC0081_SearchRotateArray         instance;
+    //LC0081_SearchRotateArray_II      instance;
     //LC0112_TreePathSum_I             instance;
     //LC0113_TreePathSum_II            instance;
+    //LC0153_RotateArrayMin_I          instance;
+    //LC0154_RotateArrayMin_II         instance;
     //LC0437_TreePathSum_III           instance;
-    LC0637_TreeLevelAverage          instance;
+    //LC0637_TreeLevelAverage          instance;
+    //LC0746_MinimalCostClimbingStairs instance;
 
 
     ILeetCodeEntry *pLeetCodeEntry = &instance;

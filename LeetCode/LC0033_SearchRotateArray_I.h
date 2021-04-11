@@ -3,21 +3,31 @@
 #include "LeetCodeDefines.h"
 #include "ILeetCodeEntry.h"
 
-class LC0081_SearchRotateArray : public ILeetCodeEntry
+class LC0033_SearchRotateArray_I : public ILeetCodeEntry
 {
 public:
     int MainEntry() override
     {
-        std::cout << "LC0081_SearchRotateArray --> MainEntry" << std::endl;
+        std::cout << "LC0033_SearchRotateArray_I --> MainEntry" << std::endl;
 
-        std::vector<int> nums1 = { 2, 5, 6, 0, 0, 1, 2 };
+        // 输入：nums = [4, 5, 6, 7, 0, 1, 2], target = 0
+        // 输出：4
+        std::vector<int> nums1 = { 4, 5, 6, 7, 0, 1, 2 };
         int target1 = 0;
 
-        std::vector<int> nums2 = { 2, 5, 6, 0, 0, 1, 2 };
+        // 输入：nums = [4, 5, 6, 7, 0, 1, 2], target = 3
+        // 输出： - 1
+        std::vector<int> nums2 = { 4, 5, 6, 7, 0, 1, 2 };
         int target2 = 3;
 
-        std::cout << "LC0081_SearchRotateArray --> Result : " << this->search(nums1, target1) << std::endl;
-        std::cout << "LC0081_SearchRotateArray --> Result : " << this->search(nums2, target2) << std::endl;
+        // 输入：nums = [1], target = 0
+        // 输出： - 1
+        std::vector<int> nums3 = { 1 };
+        int target3 = 0;
+
+        std::cout << "LC0033_SearchRotateArray_I --> Result 1 : " << this->search(nums1, target1) << std::endl;
+        std::cout << "LC0033_SearchRotateArray_I --> Result 2 : " << this->search(nums2, target2) << std::endl;
+        std::cout << "LC0033_SearchRotateArray_I --> Result 3 : " << this->search(nums3, target3) << std::endl;
         return 0;
     }
 
