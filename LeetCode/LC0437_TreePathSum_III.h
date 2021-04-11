@@ -43,7 +43,7 @@ public:
 
         // 统计改路径中满足条件的路径数（倒着尝试，包含最后一个节点。不包含最后加入节点的情况，曾经递归过程已统计过）
         int curSum = 0;
-        for (int i = path.size() - 1; i >= 0; --i)
+        for (int i = int(path.size()) - 1; i >= 0; --i)
         {
             curSum += path[i];
             if (curSum == sum)

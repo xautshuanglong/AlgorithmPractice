@@ -11,6 +11,7 @@
 #include "LC0112_TreePathSum_I.h"
 #include "LC0113_TreePathSum_II.h"
 #include "LC0437_TreePathSum_III.h"
+#include "LC0637_TreeLevelAverage.h"
 #include "LC0746_MinimalCostClimbingStairs.h"
 
 int main()
@@ -24,7 +25,8 @@ int main()
     //LC0081_SearchRotateArray         instance;
     //LC0112_TreePathSum_I             instance;
     //LC0113_TreePathSum_II            instance;
-    LC0437_TreePathSum_III           instance;
+    //LC0437_TreePathSum_III           instance;
+    LC0637_TreeLevelAverage          instance;
 
 
     ILeetCodeEntry *pLeetCodeEntry = &instance;

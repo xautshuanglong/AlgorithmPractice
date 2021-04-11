@@ -56,5 +56,8 @@
     <ClInclude Include="LC0437_TreePathSum_III.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LC0637_TreeLevelAverage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
