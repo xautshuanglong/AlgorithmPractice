@@ -148,9 +148,13 @@
     <ClInclude Include="LC0081_SearchRotateArray_II.h" />
     <ClInclude Include="LC0112_TreePathSum_I.h" />
     <ClInclude Include="LC0113_TreePathSum_II.h" />
-    <ClInclude Include="LC0121_MaxProfit.h" />
+    <ClInclude Include="LC0121_MaxProfit_I.h" />
+    <ClInclude Include="LC0122_MaxProfit_II.h" />
+    <ClInclude Include="LC0123_MaxProfit_III.h" />
     <ClInclude Include="LC0153_RotateArrayMin_I.h" />
     <ClInclude Include="LC0154_RotateArrayMin_II.h" />
+    <ClInclude Include="LC0188_MaxProfit_IV.h" />
+    <ClInclude Include="LC0200_NumOfIsland.h" />
     <ClInclude Include="LC0437_TreePathSum_III.h" />
     <ClInclude Include="LC0637_TreeLevelAverage.h" />
     <ClInclude Include="LC0746_MinimalCostClimbingStairs.h" />

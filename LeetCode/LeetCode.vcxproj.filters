@@ -29,9 +29,6 @@
     <ClInclude Include="LeetCodeDefines.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LC0121_MaxProfit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="LC0070_ClimbStairs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -66,6 +63,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LC0154_RotateArrayMin_II.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LC0121_MaxProfit_I.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LC0122_MaxProfit_II.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LC0123_MaxProfit_III.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LC0188_MaxProfit_IV.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LC0200_NumOfIsland.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
