@@ -6,7 +6,7 @@
 #include "SwordOffer_042_MaxSubArray.h"
 #include "LC0121_MaxProfit_I.h"
 #include "LC0033_SearchRotateArray_I.h"
-#include "LC0042_TrappingRainWater.h"
+#include "LC0042_TrappingRainWater_I.h"
 #include "LC0070_ClimbStairs.h"
 #include "LC0081_SearchRotateArray_II.h"
 #include "LC0112_TreePathSum_I.h"
@@ -17,6 +17,7 @@
 #include "LC0153_RotateArrayMin_I.h"
 #include "LC0154_RotateArrayMin_II.h"
 #include "LC0200_NumOfIsland.h"
+#include "LC0407_TrappingRainWater_II.h"
 #include "LC0437_TreePathSum_III.h"
 #include "LC0637_TreeLevelAverage.h"
 #include "LC0664_StrangePrinter.h"
@@ -31,13 +32,14 @@ int main()
     //LC0122_MaxProfit_II              instance;
     //LC0123_MaxProfit_III             instance;
     //LC0033_SearchRotateArray_I       instance;
-    LC0042_TrappingRainWater         instance;
+    LC0042_TrappingRainWater_I       instance;
     //LC0070_ClimbStairs               instance;
     //LC0081_SearchRotateArray_II      instance;
     //LC0112_TreePathSum_I             instance;
     //LC0113_TreePathSum_II            instance;
     //LC0153_RotateArrayMin_I          instance;
     //LC0154_RotateArrayMin_II         instance;
+    //LC0407_TrappingRainWater_II      instance;
     //LC0437_TreePathSum_III           instance;
     //LC0637_TreeLevelAverage          instance;
     //LC0664_StrangePrinter            instance;
