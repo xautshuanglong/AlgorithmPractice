@@ -28,7 +28,8 @@ public:
     int trap(std::vector<int>& height)
     {
         //return this->ScanOneByeOne(height);
-        return this->ScanLeftMaxRightMax(height);
+        //return this->ScanLeftMaxRightMax(height);
+        return this->ScanIntoStack(height);
     }
 
     int ScanOneByeOne(std::vector<int>& height)
@@ -72,7 +73,7 @@ public:
     {
         int retValue = 0;
         size_t heightSize = height.size();
-        if (heightSize < 3) return 0;
+        if (heightSize < 3) return retValue;
 
         std::vector<int> leftMax(heightSize);
         std::vector<int> rightMax(heightSize);
@@ -93,6 +94,38 @@ public:
         for (size_t i = 1; i < heightSize - 1; ++i)
         {
             retValue += min(rightMax[i], leftMax[i]) - height[i];
+        }
+
+        return retValue;
+    }
+
+    int ScanIntoStack(std::vector<int>& height)
+    {
+        int retValue = 0;
+        int heightSize = (int)height.size();
+
+        int leftMaxTemp = 0;
+        int oldTop = 0;
+        int curHeight = 0;
+        int curWidth = 0;
+        std::stack<int> indexStack;
+
+        for (int i = 0; i < heightSize; ++i)
+        {
+            while (!indexStack.empty() && height[i] > height[indexStack.top()])
+            {
+                oldTop = indexStack.top();
+                indexStack.pop();
+                if (indexStack.empty())
+                {
+                    break;
+                }
+                leftMaxTemp = indexStack.top();
+                curHeight = min(height[i], height[leftMaxTemp]) - height[oldTop];
+                curWidth = i - leftMaxTemp - 1;
+                retValue += curHeight * curWidth;
+            }
+            indexStack.push(i);
         }
 
         return retValue;

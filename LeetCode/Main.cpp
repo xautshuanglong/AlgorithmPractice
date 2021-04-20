@@ -45,7 +45,6 @@ int main()
     //LC0664_StrangePrinter            instance;
     //LC0746_MinimalCostClimbingStairs instance;
 
-
     ILeetCodeEntry *pLeetCodeEntry = &instance;
     return pLeetCodeEntry->MainEntry();
 }

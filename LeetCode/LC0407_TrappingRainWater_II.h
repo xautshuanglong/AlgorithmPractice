@@ -36,6 +36,19 @@ public:
     {
         int retValue = 0;
 
+        size_t rowSize = height.size();
+        if (rowSize < 3) return 0;
+        size_t colSize = height[0].size();
+        if (colSize < 3) return 0;
+
+        for (size_t row = 0; row < rowSize; ++row)
+        {
+            for (size_t col = 0; col < colSize; ++col)
+            {
+
+            }
+        }
+
         return retValue;
     }
 };
