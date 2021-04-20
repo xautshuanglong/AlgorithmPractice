@@ -34,7 +34,7 @@ public:
         size_t sLen = s.length();
 
         std::vector<std::vector<int>> memo = std::vector<std::vector<int>>(sLen, std::vector<int>(sLen, INT_MAX));
-        retValue = longTime(s, sLen, memo);
+        retValue = longTime(s, int(sLen), memo);
         //retValue = this->dp(s, memo, 0, sLen - 1);
 
         return retValue;

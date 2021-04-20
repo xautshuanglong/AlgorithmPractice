@@ -83,5 +83,8 @@
     <ClInclude Include="LC0664_StrangePrinter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LC0042_TrappingRainWater.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
