@@ -41,13 +41,18 @@ public:
         size_t colSize = height[0].size();
         if (colSize < 3) return 0;
 
-        for (size_t row = 0; row < rowSize; ++row)
+        int layer = 0;
+        bool hasMoreLayer = true;
+        do
         {
-            for (size_t col = 0; col < colSize; ++col)
+            for (size_t row = 0; row < rowSize; ++row)
             {
-
+                for (size_t col = 0; col < colSize; ++col)
+                {
+                    ;
+                }
             }
-        }
+        } while (hasMoreLayer);
 
         return retValue;
     }
