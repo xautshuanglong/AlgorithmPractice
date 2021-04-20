@@ -27,7 +27,73 @@ public:
 public:
     int trap(std::vector<int>& height)
     {
+        //return this->ScanOneByeOne(height);
+        return this->ScanLeftMaxRightMax(height);
+    }
+
+    int ScanOneByeOne(std::vector<int>& height)
+    {
         int retValue = 0;
+        size_t heightLen = height.size();
+        std::vector<int> heightMax(heightLen);
+
+        if (heightLen < 3) return retValue;
+
+        for (size_t i = 1; i < heightLen - 1; ++i)
+        {
+            int maxL = height[i];
+            for (size_t l = 0; l < i; ++l)
+            {
+                if (height[l] > maxL)
+                {
+                    maxL = height[l];
+                }
+            }
+            int maxR = height[i];
+            for (size_t r = i+1; r < heightLen; ++r)
+            {
+                if (height[r] > maxR)
+                {
+                    maxR = height[r];
+                }
+            }
+            heightMax[i] = min(maxL, maxR);
+        }
+
+        for (int i = 1; i < heightLen - 1; ++i)
+        {
+            retValue += heightMax[i] - height[i];
+        }
+
+        return retValue;
+    }
+
+    int ScanLeftMaxRightMax(std::vector<int>& height)
+    {
+        int retValue = 0;
+        size_t heightSize = height.size();
+        if (heightSize < 3) return 0;
+
+        std::vector<int> leftMax(heightSize);
+        std::vector<int> rightMax(heightSize);
+        leftMax[0] = height[0];
+        rightMax[heightSize - 1] = height[heightSize - 1];
+
+        // 每个桶的左侧最大值
+        for (size_t i = 1; i < heightSize; ++i)
+        {
+            leftMax[i] = max(height[i], leftMax[i - 1]);
+        }
+
+        for (size_t i = heightSize - 2; i != ULLONG_MAX; --i)
+        {
+            rightMax[i] = max(height[i], rightMax[i + 1]);
+        }
+
+        for (size_t i = 1; i < heightSize - 1; ++i)
+        {
+            retValue += min(rightMax[i], leftMax[i]) - height[i];
+        }
 
         return retValue;
     }
