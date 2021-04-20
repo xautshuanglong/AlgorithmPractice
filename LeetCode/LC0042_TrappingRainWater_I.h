@@ -130,4 +130,45 @@ public:
 
         return retValue;
     }
+
+    int ScanDoublePointer(std::vector<int>& height)
+    {
+        int retValue = 0;
+
+        int heightSize = (int)height.size();
+        int left = 0;
+        int leftMax = 0;
+        int right = heightSize - 1;
+        int rightMax = 0;
+
+        while (left < right)
+        {
+            if (height[left] < height[right])
+            {
+                if (height[left] > leftMax)
+                {
+                    leftMax = height[left];
+                } 
+                else
+                {
+                    retValue += leftMax - height[left];
+                }
+                left++;
+            } 
+            else
+            {
+                if (height[right] > rightMax)
+                {
+                    rightMax = height[right];
+                } 
+                else
+                {
+                    retValue += rightMax - height[right];
+                }
+                right--;
+            }
+        }
+
+        return retValue;
+    }
 };
