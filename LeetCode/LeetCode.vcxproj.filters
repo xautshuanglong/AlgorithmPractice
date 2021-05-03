@@ -92,5 +92,11 @@
     <ClInclude Include="LC0337_HouseRobber_III.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LC0042_TrappingRainWater_I.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LC0407_TrappingRainWater_II.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

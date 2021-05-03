@@ -144,6 +144,7 @@
   <ItemGroup>
     <ClInclude Include="ILeetCodeEntry.h" />
     <ClInclude Include="LC0033_SearchRotateArray_I.h" />
+    <ClInclude Include="LC0042_TrappingRainWater_I.h" />
     <ClInclude Include="LC0070_ClimbStairs.h" />
     <ClInclude Include="LC0081_SearchRotateArray_II.h" />
     <ClInclude Include="LC0112_TreePathSum_I.h" />
@@ -156,6 +157,7 @@
     <ClInclude Include="LC0188_MaxProfit_IV.h" />
     <ClInclude Include="LC0198_HouseRobber_I.h" />
     <ClInclude Include="LC0200_NumOfIsland.h" />
+    <ClInclude Include="LC0407_TrappingRainWater_II.h" />
     <ClInclude Include="LC0213_HouseRobber_II.h" />
     <ClInclude Include="LC0337_HouseRobber_III.h" />
     <ClInclude Include="LC0437_TreePathSum_III.h" />
