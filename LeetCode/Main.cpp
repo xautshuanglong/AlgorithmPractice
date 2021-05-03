@@ -15,7 +15,10 @@
 #include "LC0123_MaxProfit_III.h"
 #include "LC0153_RotateArrayMin_I.h"
 #include "LC0154_RotateArrayMin_II.h"
+#include "LC0198_HouseRobber_I.h"
 #include "LC0200_NumOfIsland.h"
+#include "LC0213_HouseRobber_II.h"
+#include "LC0337_HouseRobber_III.h"
 #include "LC0437_TreePathSum_III.h"
 #include "LC0637_TreeLevelAverage.h"
 #include "LC0664_StrangePrinter.h"
@@ -36,6 +39,9 @@ int main()
     //LC0113_TreePathSum_II            instance;
     //LC0153_RotateArrayMin_I          instance;
     //LC0154_RotateArrayMin_II         instance;
+    //LC0198_HouseRobber_I             instance;
+    //LC0213_HouseRobber_II            instance;
+    //LC0337_HouseRobber_III           instance;
     //LC0437_TreePathSum_III           instance;
     //LC0637_TreeLevelAverage          instance;
     LC0664_StrangePrinter            instance;
