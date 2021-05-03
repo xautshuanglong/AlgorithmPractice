@@ -43,8 +43,8 @@ int main()
     //LC0153_RotateArrayMin_I          instance;
     //LC0154_RotateArrayMin_II         instance;
     //LC0198_HouseRobber_I             instance;
-    LC0213_HouseRobber_II            instance;
-    //LC0337_HouseRobber_III           instance;
+    //LC0213_HouseRobber_II            instance;
+    LC0337_HouseRobber_III           instance;
     //LC0407_TrappingRainWater_II      instance;
     //LC0437_TreePathSum_III           instance;
     //LC0637_TreeLevelAverage          instance;
