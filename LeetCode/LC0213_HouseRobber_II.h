@@ -40,6 +40,35 @@ public:
 public:
     int Rob(std::vector<int> &nums)
     {
-        return 0;
+        int numLen = (int)nums.size();
+        if (numLen == 1)
+        {
+            return nums[0];
+        }
+
+        return max(this->HouseRobber_I(nums, 0, numLen-2), this->HouseRobber_I(nums, 1, numLen-1));
+    }
+
+private:
+    int HouseRobber_I(std::vector<int> &nums, int start, int end)
+    {
+        int numLen = end - start + 1;
+        if (numLen == 1)
+        {
+            return nums[start];
+        }
+
+        int temp = 0;
+        int first = nums[start];
+        int second = max(nums[start], nums[start + 1]);
+
+        for (int i = start + 2; i <= end; ++i)
+        {
+            temp = first;
+            first = second;
+            second = max(nums[i] + temp, second);
+        }
+
+        return second;
     }
 };
