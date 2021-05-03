@@ -29,9 +29,9 @@ void WINAPI SignalHandler(int sigCode);
 int main(int argc, char** argv)
 {
     // 控制台事件捕获测试
-    AddConsoleHandler();
+    //AddConsoleHandler();
     // 中断信号捕获测试
-    InitSignalHandler();
+    //InitSignalHandler();
 
     //NC0078_ReverseList     instance;
     //NC0093_LRU             instance;
@@ -44,12 +44,12 @@ int main(int argc, char** argv)
     // 控制台输入事件测试
     //ConsoleInputEventLoop();
     // 控制台简单循环
-    ConsoleSimpleLoop();
+    //ConsoleSimpleLoop();
 
-    UninitSignalHandler();
-    RemoveConsoleHandler();
+    //UninitSignalHandler();
+    //RemoveConsoleHandler();
 
-    std::cout << "Will exit main function ..." << std::endl;
+    std::cout << "_________________ Will exit main function _________________" << std::endl;
     return exitCode;
 }
 

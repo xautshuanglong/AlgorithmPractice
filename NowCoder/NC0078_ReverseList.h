@@ -29,7 +29,7 @@ public:
     }
 
 public:
-	ListNode *ReverseList(ListNode *pHead)
+    ListNode *ReverseList(ListNode *pHead)
     {
         if (pHead == NULL) return NULL;
 
@@ -47,5 +47,5 @@ public:
         pRetValue->next = pTempNode;
 
         return pRetValue;
-	}
+    }
 };
