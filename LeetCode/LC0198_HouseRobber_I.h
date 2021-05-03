@@ -34,6 +34,23 @@ public:
 public:
     int Rob(std::vector<int> &nums)
     {
-        return 0;
+        int numLen = (int)nums.size();
+        if (numLen == 1)
+        {
+            return nums[0];
+        }
+
+        int temp = 0;
+        int first = nums[0];
+        int second = max(nums[0], nums[1]);
+
+        for (int i = 2; i < numLen; ++i)
+        {
+            temp = first;
+            first = second;
+            second = max(nums[i] + temp, second);
+        }
+
+        return second;
     }
 };

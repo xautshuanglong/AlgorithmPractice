@@ -35,14 +35,14 @@ int main()
     //LC0122_MaxProfit_II              instance;
     //LC0123_MaxProfit_III             instance;
     //LC0033_SearchRotateArray_I       instance;
-    LC0042_TrappingRainWater_I       instance;
+    //LC0042_TrappingRainWater_I       instance;
     //LC0070_ClimbStairs               instance;
     //LC0081_SearchRotateArray_II      instance;
     //LC0112_TreePathSum_I             instance;
     //LC0113_TreePathSum_II            instance;
     //LC0153_RotateArrayMin_I          instance;
     //LC0154_RotateArrayMin_II         instance;
-    //LC0198_HouseRobber_I             instance;
+    LC0198_HouseRobber_I             instance;
     //LC0213_HouseRobber_II            instance;
     //LC0337_HouseRobber_III           instance;
     //LC0407_TrappingRainWater_II      instance;
