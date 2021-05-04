@@ -41,5 +41,14 @@
     <ClInclude Include="NC0000_InputAndOutput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="NC0000_Test_I.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NC0000_Test_II.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NC0000_Test_III.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

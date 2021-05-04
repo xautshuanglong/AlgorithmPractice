@@ -1,6 +1,10 @@
 #include <csignal>
 #include <iomanip>
 
+#include "NC0000_Test_I.h"
+#include "NC0000_Test_II.h"
+#include "NC0000_Test_III.h"
+#include "NC0000_InputAndOutput.h"
 #include "NC0078_ReverseList.h"
 #include "NC0093_LRU.h"
 #include "NC0121_Permutation.h"
@@ -33,10 +37,14 @@ int main(int argc, char** argv)
     // ÖÐ¶ÏÐÅºÅ²¶»ñ²âÊÔ
     //InitSignalHandler();
 
+    //NC0000_Test_I instance;
+    //NC0000_Test_II instance;
+    NC0000_Test_III instance;
+    //NC0000_InputAndOutput  instance;
     //NC0078_ReverseList     instance;
     //NC0093_LRU             instance;
     //NC0140_MySort          instance;
-    NC0121_Permutation     instance;
+    //NC0121_Permutation     instance;
 
     INowCoderEntry *pNowCoderEntry = &instance;
     int exitCode = pNowCoderEntry->MainEntry(argc, argv);
@@ -49,7 +57,7 @@ int main(int argc, char** argv)
     //UninitSignalHandler();
     //RemoveConsoleHandler();
 
-    std::cout << "_________________ Will exit main function _________________" << std::endl;
+    std::cout << std::endl << "_________________ Will exit main function _________________" << std::endl;
     return exitCode;
 }
 
