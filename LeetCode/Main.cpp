@@ -24,6 +24,7 @@
 #include "LC0437_TreePathSum_III.h"
 #include "LC0637_TreeLevelAverage.h"
 #include "LC0664_StrangePrinter.h"
+#include "LC0687_LongestSameValuePath.h"
 #include "LC0746_MinimalCostClimbingStairs.h"
 
 int main()
@@ -44,11 +45,12 @@ int main()
     //LC0154_RotateArrayMin_II         instance;
     //LC0198_HouseRobber_I             instance;
     //LC0213_HouseRobber_II            instance;
-    LC0337_HouseRobber_III           instance;
+    //LC0337_HouseRobber_III           instance;
     //LC0407_TrappingRainWater_II      instance;
     //LC0437_TreePathSum_III           instance;
     //LC0637_TreeLevelAverage          instance;
     //LC0664_StrangePrinter            instance;
+    LC0687_LongestSameValuePath      instance;
     //LC0746_MinimalCostClimbingStairs instance;
 
     ILeetCodeEntry *pLeetCodeEntry = &instance;
