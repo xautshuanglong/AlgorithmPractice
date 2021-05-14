@@ -161,6 +161,7 @@
     <ClInclude Include="LC0637_TreeLevelAverage.h" />
     <ClInclude Include="LC0664_StrangePrinter.h" />
     <ClInclude Include="LC0746_MinimalCostClimbingStairs.h" />
+    <ClInclude Include="LC1781_BeautyOfSubstrings.h" />
     <ClInclude Include="LeetCodeDefines.h" />
     <ClInclude Include="SwordOffer_010_II_FrogJumpStairs.h" />
     <ClInclude Include="SwordOffer_010_I_Fibonacci.h" />

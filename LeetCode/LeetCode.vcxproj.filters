@@ -89,5 +89,8 @@
     <ClInclude Include="LC0407_TrappingRainWater_II.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LC1781_BeautyOfSubstrings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
