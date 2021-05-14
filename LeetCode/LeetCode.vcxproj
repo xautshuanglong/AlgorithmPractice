@@ -155,11 +155,15 @@
     <ClInclude Include="LC0153_RotateArrayMin_I.h" />
     <ClInclude Include="LC0154_RotateArrayMin_II.h" />
     <ClInclude Include="LC0188_MaxProfit_IV.h" />
+    <ClInclude Include="LC0198_HouseRobber_I.h" />
     <ClInclude Include="LC0200_NumOfIsland.h" />
     <ClInclude Include="LC0407_TrappingRainWater_II.h" />
+    <ClInclude Include="LC0213_HouseRobber_II.h" />
+    <ClInclude Include="LC0337_HouseRobber_III.h" />
     <ClInclude Include="LC0437_TreePathSum_III.h" />
     <ClInclude Include="LC0637_TreeLevelAverage.h" />
     <ClInclude Include="LC0664_StrangePrinter.h" />
+    <ClInclude Include="LC0687_LongestSameValuePath.h" />
     <ClInclude Include="LC0746_MinimalCostClimbingStairs.h" />
     <ClInclude Include="LC1781_BeautyOfSubstrings.h" />
     <ClInclude Include="LeetCodeDefines.h" />

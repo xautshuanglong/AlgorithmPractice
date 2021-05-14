@@ -143,6 +143,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="INowCoderEntry.h" />
+    <ClInclude Include="NC0000_InputAndOutput.h" />
+    <ClInclude Include="NC0000_Test_I.h" />
+    <ClInclude Include="NC0000_Test_II.h" />
+    <ClInclude Include="NC0000_Test_III.h" />
     <ClInclude Include="NC0078_ReverseList.h" />
     <ClInclude Include="NC0093_LRU.h" />
     <ClInclude Include="NC0121_Permutation.h" />

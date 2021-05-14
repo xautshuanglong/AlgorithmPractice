@@ -83,6 +83,15 @@
     <ClInclude Include="LC0664_StrangePrinter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LC0198_HouseRobber_I.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LC0213_HouseRobber_II.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LC0337_HouseRobber_III.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="LC0042_TrappingRainWater_I.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -90,6 +99,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LC1781_BeautyOfSubstrings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LC0687_LongestSameValuePath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
