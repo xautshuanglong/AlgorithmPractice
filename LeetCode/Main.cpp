@@ -27,6 +27,7 @@
 #include "LC0664_StrangePrinter.h"
 #include "LC0687_LongestSameValuePath.h"
 #include "LC0746_MinimalCostClimbingStairs.h"
+#include "LC1781_BeautyOfSubstrings.h"
 
 int main()
 {
@@ -54,6 +55,7 @@ int main()
     //LC0664_StrangePrinter            instance;
     //LC0687_LongestSameValuePath      instance;
     //LC0746_MinimalCostClimbingStairs instance;
+    LC1781_BeautyOfSubstrings        instance;
 
     ILeetCodeEntry *pLeetCodeEntry = &instance;
     return pLeetCodeEntry->MainEntry();

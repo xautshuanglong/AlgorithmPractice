@@ -98,6 +98,9 @@
     <ClInclude Include="LC0407_TrappingRainWater_II.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LC1781_BeautyOfSubstrings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="LC0687_LongestSameValuePath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
