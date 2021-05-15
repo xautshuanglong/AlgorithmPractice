@@ -157,6 +157,7 @@
     <ClInclude Include="LC0188_MaxProfit_IV.h" />
     <ClInclude Include="LC0198_HouseRobber_I.h" />
     <ClInclude Include="LC0200_NumOfIsland.h" />
+    <ClInclude Include="LC0394_DecodeString.h" />
     <ClInclude Include="LC0407_TrappingRainWater_II.h" />
     <ClInclude Include="LC0213_HouseRobber_II.h" />
     <ClInclude Include="LC0337_HouseRobber_III.h" />

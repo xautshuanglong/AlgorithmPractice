@@ -20,6 +20,7 @@
 #include "LC0200_NumOfIsland.h"
 #include "LC0213_HouseRobber_II.h"
 #include "LC0337_HouseRobber_III.h"
+#include "LC0394_DecodeString.h"
 #include "LC0407_TrappingRainWater_II.h"
 #include "LC0437_TreePathSum_III.h"
 #include "LC0637_TreeLevelAverage.h"
@@ -46,11 +47,12 @@ int main()
     //LC0198_HouseRobber_I             instance;
     //LC0213_HouseRobber_II            instance;
     //LC0337_HouseRobber_III           instance;
+    LC0394_DecodeString              instance;
     //LC0407_TrappingRainWater_II      instance;
     //LC0437_TreePathSum_III           instance;
     //LC0637_TreeLevelAverage          instance;
     //LC0664_StrangePrinter            instance;
-    LC0687_LongestSameValuePath      instance;
+    //LC0687_LongestSameValuePath      instance;
     //LC0746_MinimalCostClimbingStairs instance;
 
     ILeetCodeEntry *pLeetCodeEntry = &instance;
