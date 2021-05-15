@@ -50,5 +50,8 @@
     <ClInclude Include="NC0000_Test_III.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="NC0000_StringDecoder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

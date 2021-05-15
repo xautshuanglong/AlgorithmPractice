@@ -4,6 +4,7 @@
 #include "NC0000_Test_I.h"
 #include "NC0000_Test_II.h"
 #include "NC0000_Test_III.h"
+#include "NC0000_StringDecoder.h"
 #include "NC0000_InputAndOutput.h"
 #include "NC0078_ReverseList.h"
 #include "NC0093_LRU.h"
@@ -39,7 +40,8 @@ int main(int argc, char** argv)
 
     //NC0000_Test_I instance;
     //NC0000_Test_II instance;
-    NC0000_Test_III instance;
+    //NC0000_Test_III instance;
+    NC0000_StringDecoder instance;
     //NC0000_InputAndOutput  instance;
     //NC0078_ReverseList     instance;
     //NC0093_LRU             instance;
