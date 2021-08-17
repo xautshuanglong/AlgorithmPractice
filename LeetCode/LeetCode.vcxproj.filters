@@ -107,5 +107,8 @@
     <ClInclude Include="LC0394_DecodeString.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LC0004_MedianOfTwoSortedArrays.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

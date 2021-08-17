@@ -4,7 +4,7 @@
 #include "SwordOffer_010_I_Fibonacci.h"
 #include "SwordOffer_010_II_FrogJumpStairs.h"
 #include "SwordOffer_042_MaxSubArray.h"
-#include "LC0121_MaxProfit_I.h"
+#include "LC0004_MedianOfTwoSortedArrays.h"
 #include "LC0033_SearchRotateArray_I.h"
 #include "LC0042_TrappingRainWater_I.h"
 #include "LC0070_ClimbStairs.h"
@@ -34,28 +34,29 @@ int main()
     //SwordOffer_042_MaxSubArray       instance;
     //SwordOffer_010_I_Fibonacci       instance;
     //SwordOffer_010_II_FrogJumpStairs instance;
-    //LC0121_MaxProfit_I               instance;
-    //LC0122_MaxProfit_II              instance;
-    //LC0123_MaxProfit_III             instance;
+    LC0004_MedianOfTwoSortedArrays     instance;
     //LC0033_SearchRotateArray_I       instance;
     //LC0042_TrappingRainWater_I       instance;
     //LC0070_ClimbStairs               instance;
     //LC0081_SearchRotateArray_II      instance;
     //LC0112_TreePathSum_I             instance;
     //LC0113_TreePathSum_II            instance;
+    //LC0121_MaxProfit_I               instance;
+    //LC0122_MaxProfit_II              instance;
+    //LC0123_MaxProfit_III             instance;
     //LC0153_RotateArrayMin_I          instance;
     //LC0154_RotateArrayMin_II         instance;
     //LC0198_HouseRobber_I             instance;
     //LC0213_HouseRobber_II            instance;
     //LC0337_HouseRobber_III           instance;
-    LC0394_DecodeString              instance;
+    //LC0394_DecodeString              instance;
     //LC0407_TrappingRainWater_II      instance;
     //LC0437_TreePathSum_III           instance;
     //LC0637_TreeLevelAverage          instance;
     //LC0664_StrangePrinter            instance;
     //LC0687_LongestSameValuePath      instance;
     //LC0746_MinimalCostClimbingStairs instance;
-    LC1781_BeautyOfSubstrings        instance;
+    //LC1781_BeautyOfSubstrings        instance;
 
     ILeetCodeEntry *pLeetCodeEntry = &instance;
     return pLeetCodeEntry->MainEntry();
