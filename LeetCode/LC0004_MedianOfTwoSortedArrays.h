@@ -76,7 +76,7 @@ public:
         return retValue;
     }
 
-    double findMedianSortedArrays_2(std::vector<int>& nums1, int start1, int end1, std::vector<int>& nums2, int start2, int end2)
+    double findMedianSortedArrays_2(std::vector<int>& nums1, std::vector<int>& nums2)
     {
         double retValue = 0.0;
         return retValue;
