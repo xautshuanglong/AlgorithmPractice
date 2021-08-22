@@ -168,8 +168,8 @@ public:
             return findMedianSortedArrays_3(nums2, nums1);
         }
 
-        int m = nums1.size();
-        int n = nums2.size();
+        int m = (int)nums1.size();
+        int n = (int)nums2.size();
         int left = 0, right = m;
         // median1：前一部分的最大值
         // median2：后一部分的最小值

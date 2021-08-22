@@ -144,6 +144,7 @@
   <ItemGroup>
     <ClInclude Include="ILeetCodeEntry.h" />
     <ClInclude Include="LC0004_MedianOfTwoSortedArrays.h" />
+    <ClInclude Include="LC0005_ZigzagConversion.h" />
     <ClInclude Include="LC0033_SearchRotateArray_I.h" />
     <ClInclude Include="LC0042_TrappingRainWater_I.h" />
     <ClInclude Include="LC0070_ClimbStairs.h" />

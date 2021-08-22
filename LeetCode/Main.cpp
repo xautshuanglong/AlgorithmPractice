@@ -5,6 +5,7 @@
 #include "SwordOffer_010_II_FrogJumpStairs.h"
 #include "SwordOffer_042_MaxSubArray.h"
 #include "LC0004_MedianOfTwoSortedArrays.h"
+#include "LC0005_ZigzagConversion.h"
 #include "LC0033_SearchRotateArray_I.h"
 #include "LC0042_TrappingRainWater_I.h"
 #include "LC0070_ClimbStairs.h"
@@ -34,7 +35,8 @@ int main()
     //SwordOffer_042_MaxSubArray       instance;
     //SwordOffer_010_I_Fibonacci       instance;
     //SwordOffer_010_II_FrogJumpStairs instance;
-    LC0004_MedianOfTwoSortedArrays     instance;
+    //LC0004_MedianOfTwoSortedArrays   instance;
+    LC0005_ZigzagConversion          instance;
     //LC0033_SearchRotateArray_I       instance;
     //LC0042_TrappingRainWater_I       instance;
     //LC0070_ClimbStairs               instance;
