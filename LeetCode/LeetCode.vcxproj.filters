@@ -110,7 +110,10 @@
     <ClInclude Include="LC0004_MedianOfTwoSortedArrays.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LC0005_ZigzagConversion.h">
+    <ClInclude Include="LC0005_LongestPalindromicSubstring.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LC0006_ZigzagConversion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
