@@ -49,9 +49,12 @@ public:
     double findMedianSortedArrays(std::vector<int>& nums1, std::vector<int>& nums2)
     {
         //return this->findMedianSortedArrays_1(nums1, nums2);
-        return this->findMedianSortedArrays_2(nums1, nums2);
+        //return this->findMedianSortedArrays_2(nums1, nums2);
+        return this->findMedianSortedArrays_2_plus(nums1, nums2);
+        //return this->findMedianSortedArrays_3(nums1, nums2);
     }
 
+private:
     /*
     * 合并两个数组后重新排序，计算出中位数。
     */
@@ -156,6 +159,75 @@ public:
         else
         {
             retValue = nextNum;
+        }
+
+        return retValue;
+    }
+
+    double findMedianSortedArrays_2_plus(std::vector<int>& nums1, std::vector<int>& nums2)
+    {
+        int nums1Size = (int)nums1.size();
+        int nums2Size = (int)nums2.size();
+
+        int totalSize(nums1Size + nums2Size);
+        if (totalSize % 2 == 0)
+        {
+            int bigNth_1 = this->getBigNth(nums1, nums2, (totalSize + 1) / 2);
+            int bigNth_2 = this->getBigNth(nums1, nums2, (totalSize + 1) / 2 + 1);
+            return (bigNth_1 +  bigNth_2) / 2.0;
+        }
+        else
+        {
+            return this->getBigNth(nums1, nums2, (totalSize + 1) / 2);
+        }
+    }
+
+    int getBigNth(std::vector<int>& nums1, std::vector<int>& nums2, int bigNth)
+    {
+        int retValue = 0;
+
+        int tempCount = 0;
+        int nums1Index = 0;
+        int nums2Index = 0;
+
+        int nums1Size = (int)nums1.size();
+        int nums2Size = (int)nums2.size();
+
+        int num1Min = INT_MAX;
+        int num2Min = INT_MAX;
+
+        while (tempCount < bigNth)
+        {
+            if (nums1Index < nums1Size)
+            {
+                num1Min = nums1[nums1Index];
+            }
+            else
+            {
+                num1Min = INT_MAX;
+            }
+
+            if (nums2Index < nums2Size)
+            {
+                num2Min = nums2[nums2Index];
+            }
+            else
+            {
+                num2Min = INT_MAX;
+            }
+
+            if (num1Min <= num2Min)
+            {
+                ++nums1Index;
+                retValue = num1Min;
+            }
+            else
+            {
+                ++nums2Index;
+                retValue = num2Min;
+            }
+
+            ++tempCount;
         }
 
         return retValue;

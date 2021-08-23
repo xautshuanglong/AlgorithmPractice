@@ -35,8 +35,8 @@ int main()
     //SwordOffer_042_MaxSubArray       instance;
     //SwordOffer_010_I_Fibonacci       instance;
     //SwordOffer_010_II_FrogJumpStairs instance;
-    //LC0004_MedianOfTwoSortedArrays   instance;
-    LC0005_ZigzagConversion          instance;
+    LC0004_MedianOfTwoSortedArrays   instance;
+    //LC0005_ZigzagConversion          instance;
     //LC0033_SearchRotateArray_I       instance;
     //LC0042_TrappingRainWater_I       instance;
     //LC0070_ClimbStairs               instance;
